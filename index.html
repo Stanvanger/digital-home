@@ -169,9 +169,10 @@ body{font-family:'DM Sans',sans-serif;color:#1E293B;background:#fff;overflow-x:h
   --fd:'Barlow Condensed',sans-serif;--fb:'DM Sans',sans-serif;
 }
 
-/* ── NAV ── */
-nav{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);
+/* ── NAV TOP ── */
+header nav{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);
   border-bottom:1px solid var(--border);padding:0 5%;min-height:68px;display:flex;align-items:center;justify-content:space-between}
+
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;min-width:0}
 .nav-logo-icon{width:42px;height:42px;background:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--fd);font-weight:800;font-size:16px;flex-shrink:0}
 .nav-logo-img{width:42px;height:42px;object-fit:contain;border-radius:50%}
@@ -358,10 +359,12 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.96);backdrop
 .trust-item{display:flex;align-items:center;gap:7px;color:#fff;font-size:13px;font-weight:500}
 
 /* ── SECTIONS ── */
-.section-sub{font-size:15px;color:var(--gray);max-width:560px;line-height:1.6}
+.section-title{font-family:var(--fd);font-weight:900;font-size:clamp(32px,5vw,54px);line-height:1;color:var(--dark);margin-bottom:12px;text-align:center}
+.section-sub{font-size:15px;color:var(--gray);max-width:560px;line-height:1.6;text-align:center;margin:0 auto 32px auto}
 /* Ocultar precios para forzar contacto/negociación */
 .prd-price, .extra-price, .extra-price-free, .cart-total-row, .wtp-amount, .wtp-label {display:none!important}
 .prd-table th:nth-child(2), .prd-table td:nth-child(2) {display:none!important}
+
 
 
 /* ── SERVICES ── */
@@ -391,10 +394,18 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.96);backdrop
 .prd-table td{padding:9px 18px;font-size:13px;border-top:1px solid var(--border);color:var(--text);vertical-align:middle}
 .prd-table tr:hover td{background:#fafbff}
 .prd-name{font-weight:500;line-height:1.35}
-.prd-price{font-weight:700;color:var(--blue);white-space:nowrap;text-align:right}
-.prd-action{text-align:right;white-space:nowrap}
-.btn-add{background:var(--blue);color:#fff;border:none;padding:5px 11px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;transition:background .2s}
-.btn-add:hover{background:var(--blue-d)}
+.prd.web-tiers{display:flex;flex-direction:column;gap:15px;margin-top:15px;height:auto;overflow:visible}
+.web-tier{border:1px solid #eee;border-radius:12px;overflow:hidden;background:#fff;transition:box-shadow .3s;height:auto}
+.web-tier:hover{box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.web-tier-head{padding:12px 16px;color:#fff;display:flex;justify-content:space-between;align-items:center;font-size:14px}
+.web-tier-body{padding:16px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.wtp-label{font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:0.5px}
+.wtp-amount{font-family:var(--fd);font-size:24px;font-weight:800}
+.web-tier-btns{display:flex;gap:10px}
+.web-tier-badge{background:rgba(255,255,255,.2);padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700}
+.web-details-pane{max-height:0;overflow:hidden;transition:all .4s ease;background:#fafafa;border-top:0 solid #eee}
+.web-details-pane.open{max-height:1000px;border-top-width:1px}
+hover{background:var(--blue-d)}
 .btn-add.added{background:var(--green)}
 .svc-note{font-size:11px;color:var(--gray);padding:8px 18px 12px;font-style:italic}
 .web-tiers{padding:12px 16px}
@@ -459,32 +470,42 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.96);backdrop
 }
 .toggle-wrap input:checked ~ .toggle-thumb{left:23px}
 
-/* Trust strip */
+/* Trust strip centered */
 .trust-strip{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-  gap:12px;margin-top:0;
+  display:flex;justify-content:center;
+  gap:16px;margin:28px auto 0;
   padding-top:28px;border-top:1px solid var(--border);
+  flex-wrap:wrap;max-width:1100px;
 }
 .trust-strip-item{
   display:flex;align-items:flex-start;gap:12px;padding:16px;
   border-radius:12px;border:1px solid var(--border);
+  max-width:260px;flex:1 1 240px;
 }
+
 .tsi-icon{font-size:24px;flex-shrink:0}
 .tsi-title{font-family:var(--fd);font-weight:800;font-size:16px;color:var(--dark);margin-bottom:3px}
 .tsi-text{font-size:12px;color:var(--gray);line-height:1.5}
 
 /* ── CTA ── */
-#cta{background:linear-gradient(135deg,#0d2b8a 0%,var(--blue) 60%,var(--blue-l) 100%);text-align:center}
-#cta .section-title{color:#fff}
-#cta .section-sub{color:rgba(255,255,255,.8);margin:0 auto 32px}
+#cta{background:linear-gradient(135deg,#0d2b8a 0%,var(--blue) 60%,var(--blue-l) 100%);text-align:center;padding:140px 5% 120px}
+#cta .section-title{color:#fff;margin-top:20px;font-size:clamp(40px,6vw,72px)}
+#cta .section-sub{color:rgba(255,255,255,.8);margin:0 auto 48px;max-width:700px}
+
+
 .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 
 /* ── FOOTER ── */
-footer{background:var(--dark);color:rgba(255,255,255,.65);padding:40px 5%;display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:20px}
-.footer-brand{font-family:var(--fd);font-size:20px;font-weight:800;color:#fff}
-.footer-links{display:flex;gap:20px;flex-wrap:wrap}
-.footer-links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:13px;transition:color .2s}
+footer{background:var(--dark);color:rgba(255,255,255,.5);padding:100px 5% 60px;text-align:center;border-top:1px solid rgba(255,255,255,.05)}
+.footer-brand{font-family:var(--fd);font-size:24px;font-weight:800;color:#fff;margin-bottom:12px;display:block}
+.footer-links{display:flex;justify-content:center;gap:24px;margin-bottom:40px;flex-wrap:wrap;list-style:none;padding:0}
+.footer-links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:14px;transition:color .2s}
 .footer-links a:hover{color:#fff}
+.footer-legal{background:var(--dark);padding:40px 5%;display:flex;justify-content:center;gap:20px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,0.05)}
+.footer-legal a{color:rgba(255,255,255,.3);text-decoration:none;font-size:12px;transition:color .2s}
+.footer-legal a:hover{color:#fff}
+
+
 
 /* ── OVERLAY ── */
 #overlay{position:fixed;inset:0;background:rgba(0,0,0,.42);z-index:1500;opacity:0;pointer-events:none;transition:opacity .3s}
@@ -745,7 +766,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--blue);outline-offse
 </aside>
 
 <!-- Catálogo de servicios de imprenta en Madrid -->
-<section id="servicios" aria-labelledby="servicios-titulo">
+<section id="servicios" aria-labelledby="servicios-titulo" style="text-align:center">
   <span class="section-tag" aria-hidden="true">Catálogo completo</span>
   <h2 class="section-title" id="servicios-titulo">Nuestros Servicios de Imprenta en Madrid</h2>
   <p class="section-sub">Selecciona los productos que te interesan y solicita un presupuesto personalizado sin compromiso. Entrega gratuita en Madrid.</p>
@@ -754,7 +775,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--blue);outline-offse
 
 <!-- Extras y servicios de diseño gráfico -->
 <section id="diferencial" aria-labelledby="diferencial-titulo">
-  <span class="section-tag" aria-hidden="true">Personaliza tu pedido</span>
+  <span class="section-tag" aria-hidden="true"></span>
   <h2 class="section-title" id="diferencial-titulo">Extras &amp; Diseño Gráfico</h2>
   <p class="section-sub" style="margin-bottom:24px">Activa lo que necesitas y se añade automáticamente a tu pedido.</p>
 
@@ -803,7 +824,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--blue);outline-offse
 
 <!-- CTA — llamada a la acción final -->
 <section id="cta" aria-labelledby="cta-titulo">
-  <span class="section-tag" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.2)" aria-hidden="true">Pide tu presupuesto</span>
+  <span class="section-tag" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.2)" aria-hidden="true"></span>
   <h2 class="section-title" id="cta-titulo" style="color:#fff;margin-bottom:10px">Lleva tu negocio<br>al siguiente nivel</h2>
   <p class="section-sub" style="color:rgba(255,255,255,.8);margin:0 auto 32px">Desde pequeños negocios hasta grandes empresas — llevamos tu imagen profesional a tu puerta, gratis.</p>
   <div class="cta-btns">
@@ -822,23 +843,23 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--blue);outline-offse
 
 <!-- Footer principal — contentinfo landmark -->
 <footer role="contentinfo" aria-label="Información de contacto y enlaces de Digital Home">
-  <div>
+  <div style="background:transparent">
     <p class="footer-brand">DIGITAL HOME™</p>
     <p style="font-size:12px;margin-top:4px">Imprenta &amp; Desarrollo Web · Madrid</p>
     <p style="font-size:11px;color:rgba(255,255,255,.35);margin-top:8px">© 2025 digitalhome.website</p>
   </div>
-  <nav aria-label="Navegación del pie de página">
-    <ul class="footer-links" role="list">
+  <div style="margin-top:20px;background:transparent">
+    <ul class="footer-links" role="list" style="background:transparent">
       <li><a href="#servicios">Servicios de Imprenta</a></li>
       <li><a href="#diferencial">Extras y Diseño</a></li>
-      <li><a href="https://wa.me/674913178" target="_blank" rel="noopener noreferrer"
-             aria-label="Contáctanos por WhatsApp (abre en nueva ventana)">WhatsApp</a></li>
+      <li><a href="https://wa.me/674913178" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
     </ul>
-    <p style="font-size:11px;color:rgba(255,255,255,.35);margin-top:8px">
-      <span aria-hidden="true">📍</span> Madrid · Entrega gratuita en toda la ciudad
+    <p style="font-size:11px;color:rgba(255,255,255,.35);margin-top:12px">
+      📍 Madrid · Entrega gratuita en toda la ciudad
     </p>
-  </nav>
+  </div>
 </footer>
+
 
 <!-- Barra legal inferior -->
 <div class="footer-legal" role="contentinfo" aria-label="Avisos legales y redes sociales">
@@ -1032,16 +1053,6 @@ function addToCart(name, price) {
 function removeItem(name) {
   cart = cart.filter(function(i){return i.name!==name;}); renderCart();
 }
-function changeQty(name, d) {
-  for(var i=0;i<cart.length;i++){
-    if(cart[i].name===name){
-      cart[i].qty=Math.max(0,cart[i].qty+d);
-      if(cart[i].qty===0)cart.splice(i,1);
-      break;
-    }
-  }
-  renderCart();
-}
 function renderCart() {
   var total=0,count=0;
   for(var i=0;i<cart.length;i++){count+=cart[i].qty;}
@@ -1061,13 +1072,26 @@ function renderCart() {
     html+='<div class="cart-item"><div class="ci-info"><div class="ci-name">'+it.name+'</div></div>';
     html+='<div class="ci-qty">';
     html+='<button class="qty-btn" onclick="changeQty(\''+en+'\',-1)">−</button>';
-    html+='<span class="qty-n">'+it.qty+'</span>';
+    html+='<input type="text" class="qty-n-input" value="'+it.qty+'" onchange="updateQtyManually(\''+en+'\', this.value)" style="width:50px;text-align:center;border:1px solid var(--border);border-radius:4px;font-weight:700;padding:2px;font-size:13px">';
     html+='<button class="qty-btn" onclick="changeQty(\''+en+'\',1)">+</button>';
-    html+='<button class="btn-rm" onclick="removeItem(\''+en+'\')">🗑</button>';
+    html+='<button class="btn-rm" onclick="removeItem(\''+en+'\')" style="margin-left:8px">✕</button>';
     html+='</div></div>';
   }
   scroll.innerHTML=html;
 }
+
+function updateQtyManually(name, val) {
+  var num = parseInt(val);
+  if(isNaN(num) || num < 1) num = 1;
+  for(var i=0; i<cart.length; i++){
+    if(cart[i].name === name){
+      cart[i].qty = num;
+      break;
+    }
+  }
+  renderCart();
+}
+
 /* Helpers ARIA para modales — WCAG 4.1.3 */
 function setModalOpen(el, open) {
   if (open) { el.classList.add('open'); el.setAttribute('aria-hidden','false'); }
@@ -1234,24 +1258,26 @@ function buildExtrasGrid() {
   var html = '';
   for(var i=0;i<EXTRAS.length;i++){
     var ex = EXTRAS[i];
-    var isFree = ex.price === 0;
-    html += '<div class="extra-card" id="ec-'+ex.id+'" onclick="toggleExtra(\''+ex.id+'\')">';
+    var isIncluded = ex.tagType === 'free';
+    var isActive = activeExtras[ex.id] || isIncluded;
+    html += '<div class="extra-card '+(isActive?'active':'')+'" id="ec-'+ex.id+'" onclick="toggleExtra(\''+ex.id+'\')">';
     html += '<div class="extra-card-icon">'+ex.icon+'</div>';
     html += '<div class="extra-card-body">';
     html += '<div class="extra-card-title">'+ex.title+'</div>';
     html += '<div class="extra-card-desc">'+ex.desc+'</div>';
     html += '<div style="display:flex;align-items:center;gap:6px;margin-top:6px">';
-    html += '<span class="extra-card-tag tag-'+(ex.tagType==='free'?'free':'optional')+'">'+ex.tag+'</span>';
-    html += '<span style="font-size:10px;color:var(--gray)">'+ ex.note +'</span>';
+    if(isIncluded) {
+      html += '<span class="extra-card-tag tag-free">INCLUIDO GRATIS</span>';
+    } else {
+      html += '<span class="extra-card-tag tag-optional">OPCIONAL (Activar)</span>';
+    }
     html += '</div></div>';
     html += '<div class="extra-card-right">';
-    if(isFree){
+    if(isIncluded){
       html += '<span class="extra-price-free">GRATIS</span>';
-      html += '<span style="font-size:11px;color:var(--green);text-align:center;font-weight:600">Incluido<br>siempre</span>';
     } else {
-      html += '<span class="extra-price">'+ex.priceLabel+'</span>';
       html += '<label class="toggle-wrap" onclick="event.stopPropagation()">';
-      html += '<input type="checkbox" id="chk-'+ex.id+'" onchange="toggleExtra(\''+ex.id+'\')">';
+      html += '<input type="checkbox" '+(isActive?'checked':'')+' onchange="toggleExtra(\''+ex.id+'\')">';
       html += '<div class="toggle-track"></div>';
       html += '<div class="toggle-thumb"></div>';
       html += '</label>';
@@ -1264,24 +1290,17 @@ function buildExtrasGrid() {
 function toggleExtra(id) {
   var ex = null;
   for(var i=0;i<EXTRAS.length;i++){if(EXTRAS[i].id===id){ex=EXTRAS[i];break;}}
-  if(!ex || ex.price===0) return;
-
-  var card = document.getElementById('ec-'+id);
-  var chk  = document.getElementById('chk-'+id);
+  if(!ex || ex.tagType === 'free') return;
 
   if(activeExtras[id]){
-    // Remove
     activeExtras[id] = false;
-    card.classList.remove('active');
-    if(chk) chk.checked = false;
-    removeItem(ex.title+' (+'+ex.price+' €)');
+    removeItem(ex.title);
   } else {
-    // Add
     activeExtras[id] = true;
-    card.classList.add('active');
-    if(chk) chk.checked = true;
-    addToCart(ex.title+' (+'+ex.price+' €)', ex.price);
+    addToCart(ex.title, ex.price);
   }
+  buildExtrasGrid();
+  renderCart();
 }
 
 buildExtrasGrid();
@@ -1293,7 +1312,7 @@ var SVCS=[
   {id:'camisetas',icon:'👕',title:'Camisetas y Uniformes',desc:'Personaliza tu imagen corporativa',
    note:'Tallas S a XXL. Logo personalizado incluido. Entrega en 7 días.',
    sizes:[{l:'Camisa',w:26,h:32},{l:'Polo',w:26,h:30}],
-   prods:[{n:'Camisa básica hombre + logo 1 lado',p:22},{n:'Camisa básica mujer + logo 1 lado',p:22},{n:'Camisa básica hombre + logo 2 lados',p:26},{n:'Camisa básica mujer + logo 2 lados',p:26},{n:'Polo unisex + logo 1 lado',p:24},{n:'Polo unisex + logo 2 lados',p:28},{n:'PACK 10 camisas hombre (1 lado)',p:190},{n:'PACK 20 camisas hombre (1 lado)',p:360},{n:'PACK 10 polos unisex (1 lado)',p:220}]},
+   prods:[{n:'Camisa básica hombre + logo 1 lado',p:22},{n:'Camisa básica mujer + logo 1 lado',p:22},{n:'Camisa básica hombre + logo 2 lados',p:26},{n:'Camisa básica mujer + logo 2 lados',p:26},{n:'Polo unisex + logo 1 lado',p:24},{n:'Polo unisex + logo 2 lados',p:28}]},
   {id:'tarjetas',icon:'💳',title:'Tarjetas de Visita',desc:'Primera impresión que dura',
    note:'Formato estándar 85×55 mm. Papel 300g.',
    sizes:[{l:'85×55mm',w:42,h:27}],
@@ -1313,7 +1332,7 @@ var SVCS=[
   {id:'menus',icon:'🍽️',title:'Menús para Restaurante',desc:'Upsell ideal · Hostelería Madrid',
    note:'Plastificados, laminados, poliéster o encuadernados.',
    sizes:[{l:'A4 210×297',w:32,h:44},{l:'A3 297×420',w:44,h:58}],
-   prods:[{n:'10 menús plastificados A4',p:40},{n:'20 menús plastificados A4',p:72},{n:'30 menús plastificados A4',p:105},{n:'10 menús plastificados A3',p:55},{n:'20 menús plastificados A3',p:99},{n:'10 menús laminados A4',p:50},{n:'20 menús laminados A4',p:70},{n:'10 menús poliéster A4',p:34},{n:'10 menús encuadernados 8p A4',p:190},{n:'20 menús encuadernados 8p A4',p:320},{n:'10 menús encuadernados 16p A4',p:330}]},
+   prods:[{n:'Menús plastificados A4',p:40},{n:'Menús plastificados A3',p:55},{n:'Menús laminados A4',p:50},{n:'Menús poliéster A4',p:34},{n:'Menús encuadernados 8p A4',p:190},{n:'Menús encuadernados 16p A4',p:330}]},
   {id:'adhesivos',icon:'🏷️',title:'Adhesivos Personalizados',desc:'Stickers y pegatinas para tu marca',
    note:'Troquelados a medida. Resistentes al exterior.',
    sizes:[{l:'50cm²',w:22,h:22,round:true},{l:'100cm²',w:30,h:24},{l:'200cm²',w:40,h:28}],
@@ -1334,10 +1353,18 @@ var SVCS=[
    note:'Precio según medidas del cliente. Vinilo exterior de alta calidad.',
    sizes:[{l:'1m²',w:32,h:32},{l:'2m²',w:44,h:32},{l:'4m² Lona',w:54,h:32},{l:'6m² Lona',w:64,h:32}],
    prods:[{n:'Vinilo escaparate 1 m²',p:55},{n:'Vinilo escaparate 2 m²',p:108},{n:'Lona fachada 4 m²',p:210},{n:'Lona gran formato 6 m²',p:315}]},
-  {id:'web',icon:'🌐',title:'Páginas Web & Digital',desc:'Tu negocio online 100% propio · Sin comisiones',
+  {id:'web',icon:'🌐',title:'Páginas Web & Digital',desc:'No es una Páginas Web màs ,Es que la IA te encuentre y te recomiende',
    note:'Web profesional 100% tuya. Sin permanencia tras 3 meses.',
    webMode:true,
-   prods:[{n:'Web BÁSICO Pago inicial',p:220,tier:'basico'},{n:'Web BÁSICO Cuota mensual',p:49,tier:'basico'},{n:'Web PRO Pago inicial',p:490,tier:'pro'},{n:'Web PRO Cuota mensual',p:99,tier:'pro'},{n:'Web PREMIUM Pago inicial',p:990,tier:'premium'},{n:'Web PREMIUM Cuota mensual',p:149,tier:'premium'},{n:'Extra: Pack TikTok Pedido Directo /mes',p:30},{n:'Extra: Modo Turista Madrid bilingüe /mes',p:20},{n:'Extra: Menú Inteligente según stock /mes',p:25}]}
+   prods:[{n:'Web BÁSICO Pago inicial',p:397,tier:'basico',
+            desc:'Tu primera web profesional, sin letra pequeña y sin sorpresas. Diseño limpio, carga rápida y optimizada para que Google y la IA encuentren tu negocio.\n\n🔧 Pago inicial: 397€ (Incluye dominio+hosting 1er año).\n\n📅 Mensualidad: 79€/mes (Mantenimiento + 1 cambios).\n\nIdeal si buscas una presencia digital real.'},
+           {n:'Web BÁSICO Cuota mensual',p:79,tier:'basico'},
+           {n:'Web PRO Pago inicial',p:697,tier:'pro',
+            desc:'La web que trabaja mientras tú atiendes tu negocio. Diseño personalizado + SEO avanzado + optimización.\n\n🔧 Pago inicial: 697€ (Desarrollo, dominio+hosting 1er año).\n\n📅 Mensualidad: 129€/mes (Mantenimiento + 2 cambios).\n\nEl equilibrio perfecto entre precio y resultados.'},
+           {n:'Web PRO Cuota mensual',p:129,tier:'pro'},
+           {n:'Web PREMIUM Pago inicial',p:997,tier:'premium',
+            desc:'Tu web hecha a medida con código 100% tuyo. Un activo digital para siempre. Desarrollo desde cero y SEO profesional.\n\n🔧 Pago inicial: 997€ (Desarrollo a medida, SEO profesional).\n\n📅 Mensualidad: 189€/mes (Mantenimiento premium + 10 cambios ).\n\nPara negocios que entienden la web como una inversión.'},
+           {n:'Web PREMIUM Cuota mensual',p:189,tier:'premium'}]}
 ];
 
 function buildSizeBar(svc){
@@ -1353,31 +1380,42 @@ function buildSizeBar(svc){
 }
 function buildWebBody(svc){
   var tiers=[{key:'basico',label:'BÁSICO',sub:'"Anti-Estafa"',color:'#3b82f6',badge:''},{key:'pro',label:'PRO',sub:'"El más elegido"',color:'#1B50E8',badge:'MÁS ELEGIDO'},{key:'premium',label:'PREMIUM',sub:'"Código Propio"',color:'#7c3aed',badge:''}];
-  var h='<div class="web-tiers"><div class="svc-note">'+svc.note+'</div>';
+  var h='<div class="web-tiers">';
   for(var t=0;t<tiers.length;t++){
     var tier=tiers[t],ini=null,mon=null;
     for(var i=0;i<svc.prods.length;i++){if(svc.prods[i].tier===tier.key){if(svc.prods[i].n.indexOf('inicial')>-1)ini=svc.prods[i];if(svc.prods[i].n.indexOf('mensual')>-1)mon=svc.prods[i];}}
     h+='<div class="web-tier" style="border-color:'+tier.color+'30"><div class="web-tier-head" style="background:'+tier.color+'"><strong>'+tier.label+' '+tier.sub+'</strong>';
-    if(tier.badge)h+='<span class="web-tier-badge">'+tier.badge+'</span>';
     h+='</div><div class="web-tier-body">';
-    if(ini)h+='<div><div class="wtp-label">Pago inicial</div><div class="wtp-amount" style="color:var(--dark)">'+ini.p+' €</div></div>';
-    if(mon)h+='<div><div class="wtp-label">Mensual</div><div class="wtp-amount" style="color:'+tier.color+'">'+mon.p+' €/mes</div></div>';
-    h+='<div class="web-tier-btns">';
-    if(ini)h+='<button class="btn-add" onclick="addToCart(\''+ini.n.replace(/'/g,"\\'")+'\',' +ini.p+')">+ Inicial</button>';
-    if(mon)h+='<button class="btn-add" onclick="addToCart(\''+mon.n.replace(/'/g,"\\'")+'\',' +mon.p+')" style="background:#f0f5ff;color:var(--blue)">+ Mensual</button>';
-    h+='</div></div></div>';
+    if(ini)h+='<div style="flex:1"><div class="wtp-label">Desde</div><div class="wtp-amount" style="color:var(--dark)">'+ini.p+' €</div></div>';
+    h+='<div class="web-tier-btns" style="flex:1;justify-content:flex-end">';
+    h+='<button class="btn-add" onclick="toggleWebDetails(\''+tier.key+'\')" style="padding:8px 16px;font-size:12px">Ver detalles</button>';
+    h+='</div></div>';
+    // Colapsable de detalles
+    h+='<div id="wdetails-'+tier.key+'" class="web-details-pane"><div style="padding:16px;white-space:pre-line;font-size:13px;line-height:1.5;color:#444">'+(ini.desc||'')+'';
+    h+='<div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">';
+    if(ini)h+='<button class="btn-add" onclick="addToCart(\''+ini.n+'\','+ini.p+')">+ Plan Inicial ('+ini.p+'€)</button>';
+    if(mon)h+='<button class="btn-add" onclick="addToCart(\''+mon.n+'\','+mon.p+')">+ Mantenimiento ('+mon.p+'€)</button>';
+    h+='</div></div></div></div>';
   }
-  var extras=svc.prods.filter(function(p){return !p.tier;});
-  if(extras.length){h+='<div class="web-extras"><div class="web-extras-head">EXTRAS OPCIONALES</div><table class="prd-table"><tbody>';for(var e=0;e<extras.length;e++){var ex=extras[e];h+='<tr><td class="prd-name">'+ex.n+'</td><td class="prd-price">+'+ex.p+' €</td><td class="prd-action"><button class="btn-add" onclick="addToCart(\''+ex.n.replace(/'/g,"\\'")+'\',' +ex.p+')">+ Añadir</button></td></tr>';}h+='</tbody></table></div>';}
   h+='</div>';return h;
 }
+
+function toggleWebDetails(key){
+  var el=document.getElementById('wdetails-'+key);
+  el.classList.toggle('open');
+}
+
+
 function buildBody(svc){
   if(svc.webMode)return buildWebBody(svc);
   var h=buildSizeBar(svc);
-  h+='<table class="prd-table"><thead><tr><th>Producto</th><th></th><th></th></tr></thead><tbody>';
+  h+='<table class="prd-table"><thead><tr><th>Producto</th><th style="width:80px">Unidades</th><th></th></tr></thead><tbody>';
   for(var i=0;i<svc.prods.length;i++){
     var p=svc.prods[i],en=p.n.replace(/'/g,"\\'");
-    // Extraer tamaño del nombre si existe para el data-size
+    var unitMatch = p.n.match(/(\d+\.?\d*)/); 
+    var defaultQty = unitMatch ? unitMatch[0] : "1";
+    var cleanName = p.n.replace(/\d+\.?\d*\s*uds/i, "").replace(/·/g, "").trim();
+    
     var sizeKey = "";
     if(svc.sizes) {
       for(var k=0; k<svc.sizes.length; k++) {
@@ -1386,10 +1424,58 @@ function buildBody(svc){
     }
     h+='<tr data-size="'+sizeKey+'"><td class="prd-name">';
     if(sizeKey) h+='<span style="display:inline-block;padding:1px 4px;background:var(--blue-p);color:var(--blue);font-size:9px;font-weight:700;border-radius:3px;margin-right:6px;border:1px solid rgba(27,80,232,0.2)">'+sizeKey+'</span>';
-    h+=p.n+'</td><td class="prd-price">'+p.p+' €</td><td class="prd-action"><button class="btn-add" onclick="addToCart(\''+en+'\','+p.p+')">+ Añadir</button></td></tr>';
+    h+=cleanName+'</td>';
+    h+='<td><input type="text" class="qty-edit-input" id="qty-'+svc.id+'-'+i+'" value="'+defaultQty+'" onclick="event.stopPropagation()" style="width:60px;padding:4px;border:1px solid var(--border);border-radius:4px;font-size:12px;font-weight:700;text-align:center;background:#fff;color:var(--dark)"></td>';
+
+    h+='<td class="prd-action"><button class="btn-add" onclick="addWithQty(\''+svc.id+'\','+i+',\''+cleanName+'\','+p.p+')">+ Añadir</button></td></tr>';
   }
   h+='</tbody></table>';return h;
 }
+
+function addWithQty(svcId, idx, name, price){
+  var input = document.getElementById('qty-'+svcId+'-'+idx);
+  var num = parseInt(input ? input.value : "1");
+  if(isNaN(num)) num = 1;
+  addToCart(name, price, num);
+}
+
+function addToCart(name, price, qty){
+  var q = qty || 1;
+  var exists = cart.find(function(it){return it.name === name});
+  if(exists){
+    exists.qty = q; // Reemplazamos por la nueva cantidad editada
+  } else {
+    cart.push({name: name, price: price, qty: q});
+  }
+  renderCart();
+  toggleCart(true);
+}
+
+
+
+function addToCart(name, price, qty){
+  var q = qty || 1;
+  var exists = cart.find(function(it){return it.name === name});
+  if(exists){
+    exists.qty += q;
+  } else {
+    cart.push({name: name, price: price, qty: q});
+  }
+  renderCart();
+  toggleCart(true);
+}
+
+function changeQty(name, d) {
+  for(var i=0; i<cart.length; i++){
+    if(cart[i].name === name){
+      cart[i].qty = Math.max(1, cart[i].qty + d);
+      break;
+    }
+  }
+  renderCart();
+}
+
+
 function toggleSvc(id){var body=document.getElementById('sb-'+id),card=body.parentElement,was=card.classList.contains('open');document.querySelectorAll('.svc-card.open').forEach(function(c){c.classList.remove('open');});if(!was)card.classList.add('open');}
 
 function selectSize(el, svcId, sizeLabel){
