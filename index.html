@@ -95,13 +95,13 @@
         "@type": "OfferCatalog",
         "name": "Catálogo de Servicios Digital Home",
         "itemListElement": [
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Tarjetas de Visita", "description": "Tarjetas de visita profesionales 85×55mm, papel 300g. Desde 42€ por 200 unidades con diseño."}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Flyers y Folletos", "description": "Flyers en múltiples formatos (A3 a A7), desde 120€ por 5.000 unidades. Entrega 24h disponible."}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Camisetas y Uniformes Personalizados", "description": "Camisetas y polos personalizados con logo corporativo. Tallas S a XXL. Desde 22€ por unidad."}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Roll Up y Expositores", "description": "Roll ups, banderas y expositores para ferias y eventos. Con soporte y bolsa de transporte."}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Vinilos y Lonas", "description": "Vinilos para escaparates y lonas de fachada de alta calidad. Desde 55€ el m²."}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Menús para Restaurante", "description": "Menús plastificados, laminados y encuadernados para hostelería. Entrega en Madrid."}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Páginas Web", "description": "Diseño y desarrollo de páginas web profesionales para negocios locales. Sin comisiones."}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Tarjetas de Visita", "description": "Tarjetas de visita profesionales 85×55mm, papel 300g. Consulta presupuesto personalizado según volumen."}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Flyers y Folletos", "description": "Flyers en múltiples formatos (A3 a A7). Entrega 24h disponible. Consulta precio por volumen."}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Camisetas y Uniformes Personalizados", "description": "Camisetas y polos personalizados con logo corporativo. Consulta precio para tu diseño."}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Roll Up y Expositores", "description": "Roll ups, banderas y expositores para ferias y eventos con soporte incluido."}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Vinilos y Lonas", "description": "Vinilos para escaparates y lonas de fachada de alta calidad. Resistentes a exterior."}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Menús para Restaurante", "description": "Menús plastificados, laminados y encuadernados para hostelería de Madrid."}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Páginas Web", "description": "Diseño y desarrollo de páginas web profesionales para negocios locales en Madrid."}},
           {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Entrega a Domicilio Gratis", "description": "Servicio gratuito de entrega de pedidos en Madrid capital y área metropolitana."}}
         ]
       }
@@ -111,7 +111,7 @@
       "@id": "https://digitalhome.website/#website",
       "url": "https://digitalhome.website",
       "name": "Digital Home Imprenta Madrid",
-      "description": "Imprenta profesional en Madrid. Tarjetas, flyers, camisetas, vinilos y páginas web con entrega gratis a domicilio.",
+      "description": "Imprenta profesional en Madrid. Solicita presupuesto de tarjetas, flyers y vinilos con entrega gratis.",
       "inLanguage": "es-ES",
       "publisher": {"@id": "https://digitalhome.website/#business"}
     },
@@ -358,10 +358,11 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.96);backdrop
 .trust-item{display:flex;align-items:center;gap:7px;color:#fff;font-size:13px;font-weight:500}
 
 /* ── SECTIONS ── */
-section{padding:72px 5%}
-.section-tag{display:inline-block;background:var(--blue-p);color:var(--blue);font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:12px}
-.section-title{font-family:var(--fd);font-weight:900;font-size:clamp(32px,5vw,54px);line-height:1;color:var(--dark);margin-bottom:12px}
 .section-sub{font-size:15px;color:var(--gray);max-width:560px;line-height:1.6}
+/* Ocultar precios para forzar contacto/negociación */
+.prd-price, .extra-price, .extra-price-free, .cart-total-row, .wtp-amount, .wtp-label {display:none!important}
+.prd-table th:nth-child(2), .prd-table td:nth-child(2) {display:none!important}
+
 
 /* ── SERVICES ── */
 #servicios{background:var(--gray-l)}
@@ -656,13 +657,13 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--blue);outline-offse
       <h1 class="hero-title-d">TU IMAGEN<br>NOS IMPORTA</h1>
       <p class="hero-sub-d">Diseño profesional + impresión de calidad<br>+ entrega gratis en toda Madrid</p>
       <div class="hero-ctas">
-        <a href="#servicios" class="btn-primary" aria-label="Ver precios de todos los servicios de imprenta">
-          <span aria-hidden="true">📦</span> Ver precios
+        <a href="#servicios" class="btn-primary" aria-label="Pedir presupuesto de nuestros servicios de imprenta">
+          <span aria-hidden="true">📦</span> Consultar presupuesto
         </a>
         <a href="https://wa.me/674913178?text=Hola!%20Quiero%20pedir%20presupuesto" target="_blank"
            rel="noopener noreferrer" class="btn-outline"
            aria-label="Pedir presupuesto por WhatsApp (abre en nueva ventana)">
-          <span aria-hidden="true">💬</span> Pedir presupuesto
+          <span aria-hidden="true">💬</span> Hablar con un asesor
         </a>
       </div>
     </div>
@@ -747,7 +748,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--blue);outline-offse
 <section id="servicios" aria-labelledby="servicios-titulo">
   <span class="section-tag" aria-hidden="true">Catálogo completo</span>
   <h2 class="section-title" id="servicios-titulo">Nuestros Servicios de Imprenta en Madrid</h2>
-  <p class="section-sub">Precios finales al cliente. Entrega gratuita en Madrid incluida en todos los productos.</p>
+  <p class="section-sub">Selecciona los productos que te interesan y solicita un presupuesto personalizado sin compromiso. Entrega gratuita en Madrid.</p>
   <div class="services-grid" id="sGrid" role="list" aria-label="Lista de servicios disponibles"></div>
 </section>
 
@@ -868,11 +869,11 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--blue);outline-offse
   </div>
   <div class="cart-foot" id="cartFoot" style="display:none">
     <div class="cart-total-row">
-      <span>Total estimado</span>
-      <strong id="cartTotal" aria-live="polite" aria-atomic="true">0 €</strong>
+      <span>Estado del pedido</span>
+      <strong id="cartTotal" aria-live="polite" aria-atomic="true">Pendiente presupuesto</strong>
     </div>
-    <button class="btn-checkout" onclick="openCheckout()" aria-label="Finalizar pedido por WhatsApp">
-      <span aria-hidden="true">📲</span> Finalizar por WhatsApp
+    <button class="btn-checkout" onclick="openCheckout()" aria-label="Pedir presupuesto por WhatsApp">
+      <span aria-hidden="true">📲</span> Pedir presupuesto por WhatsApp
     </button>
   </div>
 </aside>
@@ -1043,7 +1044,7 @@ function changeQty(name, d) {
 }
 function renderCart() {
   var total=0,count=0;
-  for(var i=0;i<cart.length;i++){total+=cart[i].price*cart[i].qty;count+=cart[i].qty;}
+  for(var i=0;i<cart.length;i++){count+=cart[i].qty;}
   var badge=document.getElementById('cartBadge');
   badge.textContent=count;
   count>0?badge.classList.add('show'):badge.classList.remove('show');
@@ -1054,12 +1055,10 @@ function renderCart() {
     foot.style.display='none';return;
   }
   foot.style.display='block';
-  document.getElementById('cartTotal').textContent=total+' €';
   var html='';
   for(var j=0;j<cart.length;j++){
     var it=cart[j],en=it.name.replace(/'/g,"\\'");
-    html+='<div class="cart-item"><div class="ci-info"><div class="ci-name">'+it.name+'</div>';
-    html+='<div class="ci-price">'+it.price+' € c/u · '+(it.price*it.qty)+' €</div></div>';
+    html+='<div class="cart-item"><div class="ci-info"><div class="ci-name">'+it.name+'</div></div>';
     html+='<div class="ci-qty">';
     html+='<button class="qty-btn" onclick="changeQty(\''+en+'\',-1)">−</button>';
     html+='<span class="qty-n">'+it.qty+'</span>';
@@ -1157,12 +1156,12 @@ function sendOrder(){
   var address=document.getElementById('fAddress').value.trim();
   var email=document.getElementById('fEmail').value.trim();
   var notes=document.getElementById('fNotes').value.trim();
-  var total=0,lines='';
-  for(var i=0;i<cart.length;i++){total+=cart[i].price*cart[i].qty;lines+='  • '+cart[i].name+' × '+cart[i].qty+' = '+(cart[i].price*cart[i].qty)+' €\n';}
+  var lines='';
+  for(var i=0;i<cart.length;i++){lines+='  • '+cart[i].name+' × '+cart[i].qty+'\n';}
   var msg='🛒 *NUEVO PEDIDO – Digital Home*\n\n';
   msg+='👤 *Cliente:* '+name+'\n';msg+='📞 *Teléfono:* '+phone+'\n';msg+='📍 *Dirección:* '+address+'\n';
   if(email)msg+='📧 *Email:* '+email+'\n';
-  msg+='\n📦 *PRODUCTOS:*\n'+lines+'\n💰 *TOTAL: '+total+' €*\n🚚 _Entrega gratuita en Madrid_';
+  msg+='\n📦 *PRODUCTOS:*\n'+lines+'\n🚚 _Entrega gratuita en Madrid_';
   if(notes)msg+='\n\n📝 *Notas:* '+notes;
   if(selectedFile)msg+='\n\n📎 *Adjunta archivo de diseño en el chat*';
   window.open('https://wa.me/674913178?text='+encodeURIComponent(msg),'_blank','noopener');
@@ -1191,7 +1190,7 @@ var EXTRAS = [
     title:'Diseño desde cero',
     desc:'Nuestros diseñadores crean tu material visual completo: logo, composición, tipografía y paleta de colores. Recibirás prueba para aprobar antes de imprimir.',
     tag:'OPCIONAL', tagType:'optional',
-    price:30, priceLabel:'30 €',
+    price:0, priceLabel:'A consultar',
     note:'Ideal si no tienes diseño ni logo propio.'
   },
   {
@@ -1199,7 +1198,7 @@ var EXTRAS = [
     title:'Retoque de diseño',
     desc:'Tienes un logo o diseño base pero necesita adaptarse al formato de impresión, ajustar colores, resolución o composición. Lo hacemos nosotros.',
     tag:'OPCIONAL', tagType:'optional',
-    price:15, priceLabel:'15 €',
+    price:0, priceLabel:'A consultar',
     note:'Apto si ya tienes diseño pero necesita ajustes.'
   },
   {
@@ -1207,7 +1206,7 @@ var EXTRAS = [
     title:'Entrega urgente',
     desc:'Tu pedido pasa a primer lugar en la cola de producción. Garantizamos máxima prioridad de fabricación y entrega el mismo día o al día siguiente en Madrid.',
     tag:'OPCIONAL', tagType:'optional',
-    price:20, priceLabel:'+20 €',
+    price:0, priceLabel:'Consulta urgencia',
     note:'Disponible para pedidos recibidos antes de las 12:00h.'
   },
   {
@@ -1215,7 +1214,7 @@ var EXTRAS = [
     title:'Prueba de impresión',
     desc:'Te enviamos una muestra física de un único ejemplar antes de imprimir la tirada completa. Así puedes comprobar color, acabado y tamaño real.',
     tag:'OPCIONAL', tagType:'optional',
-    price:10, priceLabel:'10 €',
+    price:0, priceLabel:'A consultar',
     note:'Muy recomendado para pedidos grandes o colores corporativos exactos.'
   },
   {
@@ -1223,7 +1222,7 @@ var EXTRAS = [
     title:'Entrega a domicilio en Madrid',
     desc:'Llevamos tu pedido directamente a tu negocio o dirección en Madrid sin coste adicional. Sin desplazamientos ni esperas.',
     tag:'SIEMPRE GRATIS', tagType:'free',
-    price:0, priceLabel:'0 €',
+    price:0, priceLabel:'Gratis',
     note:'Solo disponible en Madrid capital y área metropolitana.'
   }
 ];
@@ -1346,7 +1345,7 @@ function buildSizeBar(svc){
   var h='<div class="size-ref-bar">';
   for(var i=0;i<svc.sizes.length;i++){
     var s=svc.sizes[i],br=s.round?'50%':'3px',fs=s.l&&s.l.length>5?'7px':'9px';
-    h+='<div class="sz-item"><div class="sz-box" onclick="selectSize(this)" style="width:'+s.w+'px;height:'+s.h+'px;border-radius:'+br+';font-size:'+fs+'">'+s.l+'</div><div class="sz-lbl">'+s.l+'</div></div>';
+    h+='<div class="sz-item"><div class="sz-box" onclick="selectSize(this, \''+svc.id+'\', \''+s.l+'\')" style="width:'+s.w+'px;height:'+s.h+'px;border-radius:'+br+';font-size:'+fs+'">'+s.l+'</div><div class="sz-lbl">'+s.l+'</div></div>';
     if(i<svc.sizes.length-1)h+='<span style="color:#ccc;font-size:10px;padding-bottom:16px">·</span>';
   }
   h+='</div><div class="size-note">'+svc.note+'</div>';
@@ -1375,17 +1374,40 @@ function buildWebBody(svc){
 function buildBody(svc){
   if(svc.webMode)return buildWebBody(svc);
   var h=buildSizeBar(svc);
-  h+='<table class="prd-table"><thead><tr><th>Producto</th><th>Precio</th><th></th></tr></thead><tbody>';
-  for(var i=0;i<svc.prods.length;i++){var p=svc.prods[i],en=p.n.replace(/'/g,"\\'");h+='<tr><td class="prd-name">'+p.n+'</td><td class="prd-price">'+p.p+' €</td><td class="prd-action"><button class="btn-add" onclick="addToCart(\''+en+'\','+p.p+')">+ Añadir</button></td></tr>';}
+  h+='<table class="prd-table"><thead><tr><th>Producto</th><th></th><th></th></tr></thead><tbody>';
+  for(var i=0;i<svc.prods.length;i++){
+    var p=svc.prods[i],en=p.n.replace(/'/g,"\\'");
+    // Extraer tamaño del nombre si existe para el data-size
+    var sizeKey = "";
+    if(svc.sizes) {
+      for(var k=0; k<svc.sizes.length; k++) {
+        if(p.n.toLowerCase().includes(svc.sizes[k].l.toLowerCase())) { sizeKey = svc.sizes[k].l; break; }
+      }
+    }
+    h+='<tr data-size="'+sizeKey+'"><td class="prd-name">';
+    if(sizeKey) h+='<span style="display:inline-block;padding:1px 4px;background:var(--blue-p);color:var(--blue);font-size:9px;font-weight:700;border-radius:3px;margin-right:6px;border:1px solid rgba(27,80,232,0.2)">'+sizeKey+'</span>';
+    h+=p.n+'</td><td class="prd-price">'+p.p+' €</td><td class="prd-action"><button class="btn-add" onclick="addToCart(\''+en+'\','+p.p+')">+ Añadir</button></td></tr>';
+  }
   h+='</tbody></table>';return h;
 }
 function toggleSvc(id){var body=document.getElementById('sb-'+id),card=body.parentElement,was=card.classList.contains('open');document.querySelectorAll('.svc-card.open').forEach(function(c){c.classList.remove('open');});if(!was)card.classList.add('open');}
 
-function selectSize(el){
+function selectSize(el, svcId, sizeLabel){
   var bar = el.closest('.size-ref-bar');
   if(!bar) return;
   bar.querySelectorAll('.sz-box').forEach(function(box){box.classList.remove('active');});
   el.classList.add('active');
+
+  // Alineación: buscar en la tabla de este servicio la primera fila que coincida con el tamaño
+  var section = document.getElementById('sb-' + svcId);
+  if(section) {
+    var rows = section.querySelectorAll('tr[data-size="'+sizeLabel+'"]');
+    if(rows.length > 0) {
+      rows[0].scrollIntoView({behavior:'smooth', block:'center'});
+      rows[0].style.backgroundColor = '#f0f5ff';
+      setTimeout(function(){ rows[0].style.backgroundColor = ''; }, 1000);
+    }
+  }
 }
 
 var grid=document.getElementById('sGrid');
