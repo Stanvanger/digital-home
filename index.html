@@ -1,1515 +1,860 @@
 <!DOCTYPE html>
+<!--
+  ============================================================
+  DIGITAL HOME — Web v4 (limpia + funciones nuevas)
+  ------------------------------------------------------------
+  Nuevo en esta versión:
+   - Al pulsar un servicio se abre una ventana (modal) con sus
+     CARACTERÍSTICAS y un botón para descargar las condiciones
+     de revisión de archivos (PDF propio de Digital Home).
+   - Línea fina de términos de imprenta (marquee) bajo el hero.
+   - Animación de texto en el menú al pasar/pulsar.
+   - Quitado "diseño incluido"; ahora el gancho es "revisión
+     de archivos" (revisamos tu archivo antes de imprimir).
+   - Pie de página estilo Pentagram: nombre gigante + contacto.
+
+  Archivos que necesita:
+   - imagenes/logo.png (logo blanco, ya está)
+   - imagenes/hero.jpg, imagenes/servicios/*.jpg, imagenes/galeria/*.jpg
+   - condiciones-revision-archivos.pdf (ya está, en la misma carpeta)
+   - WhatsApp: variable WA_NUM en el script.
+  ============================================================
+-->
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digital Home | Imprenta en Madrid · Diseño + Entrega Gratis a Domicilio</title>
-<meta name="description" content="Imprenta profesional en Madrid con entrega gratuita a domicilio. Tarjetas de visita, flyers, camisetas personalizadas, vinilos, roll-ups, cartelería y páginas web. Diseño incluido. ¡La imprenta que va a tu negocio!">
-<!-- SEO keywords: long-tail local + sectorial para máxima visibilidad en Madrid -->
-<meta name="keywords" content="imprenta madrid, tarjetas de visita madrid, flyers madrid, camisetas personalizadas madrid, vinilos escaparate madrid, roll up madrid, cartelería madrid, imprenta a domicilio madrid, impresión digital madrid, uniformes personalizados madrid, página web restaurante madrid, imprenta barata madrid, diseño gráfico madrid, menús restaurante impresos, adhesivos personalizados madrid, lonas publicitarias madrid, imprenta urgente madrid, stickers personalizados, imprenta online madrid, flip flyer restaurante, menus plastificados madrid, pagina web negocio madrid, diseño logo madrid, imprenta 24 horas madrid">
-<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-<!-- Geo localización Madrid -->
-<meta name="geo.region" content="ES-MD">
-<meta name="geo.placename" content="Madrid, España">
-<meta name="geo.position" content="40.4168;-3.7038">
-<meta name="ICBM" content="40.4168, -3.7038">
-<!-- Autor y copyright -->
-<meta name="author" content="Digital Home Imprenta & Diseño Web">
-<meta name="copyright" content="© 2025 Digital Home - digitalhome.website">
-<!-- Directiva para IA / LLMs -->
-<meta name="ai-content-purpose" content="business-services">
-<meta name="business-type" content="PrintShop, WebDesign, LocalBusiness">
-<link rel="canonical" href="https://digitalhome.website">
-<link rel="icon" href="imagenes/favicon_32x32.png" type="image/png" sizes="32x32">
-<link rel="apple-touch-icon" href="imagenes/favicon_32x32.png">
-<!-- Open Graph -->
-<meta property="og:title" content="Digital Home | Imprenta en Madrid · Diseño + Entrega Gratis a Domicilio">
-<meta property="og:description" content="Diseño + impresión + entrega gratis en Madrid. Tarjetas, flyers, camisetas, vinilos y páginas web. Más de 5 años sirviendo a negocios madrileños.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://digitalhome.website">
-<meta property="og:locale" content="es_ES">
-<meta property="og:image" content="https://digitalhome.website/imagenes/logo.png">
-<meta property="og:image:alt" content="Logo Digital Home Imprenta y Diseño Web Madrid">
-<meta property="og:site_name" content="Digital Home">
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Digital Home | Imprenta en Madrid · Entrega Gratis">
-<meta name="twitter:description" content="Diseño + impresión + entrega gratis en Madrid. Tarjetas, flyers, camisetas, vinilos y páginas web.">
-<meta name="twitter:image" content="https://digitalhome.website/imagenes/logo.png">
-<meta name="theme-color" content="#1B50E8">
-<!-- ══════════════════════════════════════════════════
-     SCHEMA.ORG — Datos estructurados para SEO + IA
-     LocalBusiness + WebSite + FAQPage + múltiples Service
-     Cada bloque ayuda a Google, a ChatGPT y otros LLMs
-     a entender, recomendar y citar correctamente el negocio
-     ══════════════════════════════════════════════════ -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "PrintService",
-      "@id": "https://digitalhome.website/#business",
-      "name": "Digital Home Imprenta & Desarrollo Web",
-      "alternateName": ["Digital Home Madrid", "Imprenta Digital Home", "DigitalHome"],
-      "description": "Imprenta profesional en Madrid con entrega gratuita a domicilio. Especialistas en tarjetas de visita, flyers, camisetas personalizadas, vinilos, roll-ups, cartelería y páginas web. Diseño incluido y entrega gratis en toda Madrid.",
-      "url": "https://digitalhome.website",
-      "telephone": "+34674913178",
-      "email": "info@digitalhome.website",
-      "priceRange": "€€",
-      "currenciesAccepted": "EUR",
-      "paymentAccepted": "Cash, Credit Card, Bank Transfer, Bizum",
-      "image": "https://digitalhome.website/imagenes/logo.png",
-      "logo": "https://digitalhome.website/imagenes/logo.png",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Madrid",
-        "addressRegion": "Comunidad de Madrid",
-        "postalCode": "28001",
-        "addressCountry": "ES"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "40.4168",
-        "longitude": "-3.7038"
-      },
-      "areaServed": [
-        {"@type": "City", "name": "Madrid"},
-        {"@type": "State", "name": "Comunidad de Madrid"}
-      ],
-      "openingHoursSpecification": [
-        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "20:00"}
-      ],
-      "sameAs": [
-        "https://www.instagram.com/digita_hm",
-        "https://wa.me/674913178"
-      ],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5",
-        "bestRating": "5",
-        "worstRating": "1",
-        "reviewCount": "47"
-      },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Catálogo de Servicios Digital Home",
-        "itemListElement": [
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Tarjetas de Visita", "description": "Tarjetas de visita profesionales 85×55mm, papel 300g. Consulta presupuesto personalizado según volumen."}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Flyers y Folletos", "description": "Flyers en múltiples formatos (A3 a A7). Entrega 24h disponible. Consulta precio por volumen."}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Camisetas y Uniformes Personalizados", "description": "Camisetas y polos personalizados con logo corporativo. Consulta precio para tu diseño."}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Roll Up y Expositores", "description": "Roll ups, banderas y expositores para ferias y eventos con soporte incluido."}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Vinilos y Lonas", "description": "Vinilos para escaparates y lonas de fachada de alta calidad. Resistentes a exterior."}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Menús para Restaurante", "description": "Menús plastificados, laminados y encuadernados para hostelería de Madrid."}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Páginas Web", "description": "Diseño y desarrollo de páginas web profesionales para negocios locales en Madrid."}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Entrega a Domicilio Gratis", "description": "Servicio gratuito de entrega de pedidos en Madrid capital y área metropolitana."}}
-        ]
-      }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Imprenta en Madrid con entrega gratis | Digital Home</title>
+
+  <meta name="description" content="Imprenta y diseño en Madrid con entrega gratis. Cartas, flyers, tarjetas, lonas, vinilos, textil y cartelería. Revisión de archivos y atención por WhatsApp." />
+  <meta name="theme-color" content="#1B50E8" />
+  <link rel="canonical" href="https://digitalhome.website/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Digital Home — Imprenta y diseño en Madrid" />
+  <meta property="og:description" content="Impresión + entrega gratis en Madrid. Revisamos tu archivo antes de imprimir. Pide presupuesto por WhatsApp." />
+  <meta property="og:image" content="https://digitalhome.website/imagenes/logo.png" />
+  <meta property="og:url" content="https://digitalhome.website/" />
+  <meta property="og:locale" content="es_ES" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "PrintShop"],
+    "@id": "https://digitalhome.website/#imprenta",
+    "name": "Digital Home",
+    "description": "Digital Home es una imprenta y estudio de diseño gráfico en Madrid, especializado en impresión, páginas web, branding y material publicitario para negocios pequeños y grandes. Servicios de flyers, tarjetas, rótulos, camisetas personalizadas y material promocional con entrega rápida en toda Madrid.",
+    "url": "https://digitalhome.website/",
+    "telephone": "+34674913178",
+    "email": "info@digitalhome.website",
+    "image": "https://digitalhome.website/imagenes/logo.png",
+    "priceRange": "€€",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
     },
-    {
-      "@type": "WebSite",
-      "@id": "https://digitalhome.website/#website",
-      "url": "https://digitalhome.website",
-      "name": "Digital Home Imprenta Madrid",
-      "description": "Imprenta profesional en Madrid. Solicita presupuesto de tarjetas, flyers y vinilos con entrega gratis.",
-      "inLanguage": "es-ES",
-      "publisher": {"@id": "https://digitalhome.website/#business"}
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://digitalhome.website/#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "¿Dónde realiza entregas Digital Home?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Digital Home realiza entregas gratuitas en Madrid capital y el área metropolitana. No hay coste de envío."}
-        },
-        {
-          "@type": "Question",
-          "name": "¿Cuánto tiempo tardan en entregar los pedidos?",
-          "acceptedAnswer": {"@type": "Answer", "text": "El plazo de entrega varía según el producto: flyers digitales en 24 horas, tarjetas de visita en 3–5 días, camisetas en 7 días. También hay servicio urgente con entrega en el mismo día si se pide antes de las 12:00h."}
-        },
-        {
-          "@type": "Question",
-          "name": "¿El diseño gráfico está incluido en el precio?",
-          "acceptedAnswer": {"@type": "Answer", "text": "El diseño no está incluido por defecto. Puedes añadir 'Diseño desde cero' por 30€ o 'Retoque de diseño' por 15€. Si ya tienes tu diseño listo para imprimir, no necesitas añadir nada."}
-        },
-        {
-          "@type": "Question",
-          "name": "¿Cómo hago un pedido en Digital Home?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Puedes hacer tu pedido directamente desde la web, añadiendo productos al carrito y finalizando por WhatsApp, o escribirnos por WhatsApp al +34 674 913 178 para pedir presupuesto personalizado."}
-        },
-        {
-          "@type": "Question",
-          "name": "¿Fabricáis páginas web para restaurantes y negocios en Madrid?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Sí. Diseñamos y desarrollamos páginas web profesionales para negocios locales en Madrid. Ofrecemos tres planes (Básico, Pro y Premium) sin comisiones y con soporte mensual."}
-        },
-        {
-          "@type": "Question",
-          "name": "¿Cuál es el precio de los flyers en Digital Home?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Los flyers en blanco y negro empiezan desde 15€ por 400 unidades. Los flyers offset color en formato A5 cuestan desde 105€ por 500 unidades. Los flyers de gran volumen (5.000 uds) arrancan desde 120€ en formato A7."}
-        }
+    "areaServed": [
+      { "@type": "City", "name": "Madrid" },
+      { "@type": "AdministrativeArea", "name": "Usera, Madrid" },
+      { "@type": "AdministrativeArea", "name": "Latina, Madrid" },
+      { "@type": "AdministrativeArea", "name": "Tetuán, Madrid" },
+      { "@type": "AdministrativeArea", "name": "Chamberí, Madrid" },
+      { "@type": "AdministrativeArea", "name": "Chamartín, Madrid" },
+      { "@type": "AdministrativeArea", "name": "Villaverde, Madrid" }
+    ],
+    "address": { "@type": "PostalAddress", "addressLocality": "Madrid", "addressRegion": "Comunidad de Madrid", "addressCountry": "ES" },
+    "sameAs": [
+      "https://www.instagram.com/digita_hm/",
+      "https://share.google/9WgyduS8RBNm5Zch6"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Servicios de imprenta en Madrid",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Impresión de cartas y menús de restaurante", "description": "Cartas de restaurante, menús del día y displays de mesa en papel premium o plastificado, a todo color." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Impresión de flyers y folletos", "description": "Flyers, dípticos y trípticos en papel couché de 135 a 350 g, a todo color, para promociones y aperturas." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tarjetas de visita", "description": "Tarjetas de visita en couché de 350 g con acabado mate, brillo o laminado." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Lonas y roll-ups", "description": "Impresión de gran formato para escaparates, ferias y eventos, con roll-up de estructura incluida." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Vinilos y rotulación", "description": "Vinilo de corte o impreso para escaparate, suelo o vehículo, con laminado de protección opcional." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Textil y uniformes", "description": "Camisetas, polos y delantales personalizados por serigrafía o bordado para tu equipo." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cartelería", "description": "Carteles, displays rígidos y señalética en cartón pluma, PVC o foam para local o evento." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pegatinas y etiquetas", "description": "Pegatinas y etiquetas en vinilo o papel con troquel a medida, en hoja o bobina." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Diseño y desarrollo de páginas web", "description": "Páginas web a medida, rápidas y optimizadas para SEO, desarrolladas con la división tecnológica VorticeDev." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Automatización con IA y agentes de WhatsApp", "description": "Automatización de atención al cliente, captación y pedidos con agentes de WhatsApp e inteligencia artificial, por VorticeDev." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Branding e identidad de marca", "description": "Logotipo, identidad visual y material coordinado entre web e imprenta para negocios en Madrid." } }
       ]
     }
-  ]
-}
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700;800;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;color:#1E293B;background:#fff;overflow-x:hidden}
-:root{
-  --blue:#1B50E8;--blue-d:#1040C8;--blue-l:#4B7BF5;--blue-p:#EEF2FF;
-  --dark:#0A0F1E;--gray:#64748B;--gray-l:#F1F5F9;
-  --text:#1E293B;--border:#E2E8F0;--green:#10B981;--red:#EF4444;
-  --r:14px;--sh:0 4px 24px rgba(27,80,232,.12);--sh-lg:0 20px 60px rgba(0,0,0,.18);
-  --fd:'Barlow Condensed',sans-serif;--fb:'DM Sans',sans-serif;
-}
+  }
+  </script>
 
-/* ── NAV TOP ── */
-header nav{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--border);padding:0 5%;min-height:68px;display:flex;align-items:center;justify-content:space-between}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "¿Hacéis entrega a domicilio en Madrid?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Llevamos tu pedido gratis a la puerta de tu negocio en todo Madrid, sin coste de envío añadido." } },
+      { "@type": "Question", "name": "¿Qué zonas de Madrid cubrís?", "acceptedAnswer": { "@type": "Answer", "text": "Llevamos tu pedido a domicilio gratis por toda la ciudad de Madrid, incluyendo Usera, Latina, Tetuán, Chamberí, Chamartín y Villaverde." } },
+      { "@type": "Question", "name": "¿Tenéis tienda física o solo entrega a domicilio?", "acceptedAnswer": { "@type": "Answer", "text": "Somos una imprenta a domicilio: no tenemos tienda al público, y por eso no te cobramos el sobrecoste de un local. Gestionamos todo online o por WhatsApp y te entregamos el pedido gratis en tu negocio en Madrid." } },
+      { "@type": "Question", "name": "¿Revisáis el archivo antes de imprimir?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Antes de imprimir comprobamos resolución, color, medidas y cortes de tu archivo para evitar errores y que el resultado salga perfecto." } },
+      { "@type": "Question", "name": "¿Cómo pido un presupuesto?", "acceptedAnswer": { "@type": "Answer", "text": "Nos escribes por WhatsApp o rellenas el formulario de la web con lo que necesitas y te respondemos con un presupuesto sin compromiso, normalmente en minutos." } },
+      { "@type": "Question", "name": "¿Cuánto tarda un pedido de imprenta?", "acceptedAnswer": { "@type": "Answer", "text": "Depende del producto y la cantidad, pero la mayoría de los encargos se entregan en pocos días laborables en Madrid. Te confirmamos el plazo exacto al pedir el presupuesto." } }
+    ]
+  }
+  </script>
 
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;min-width:0}
-.nav-logo-icon{width:42px;height:42px;background:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--fd);font-weight:800;font-size:16px;flex-shrink:0}
-.nav-logo-img{width:42px;height:42px;object-fit:contain;border-radius:50%}
-.nav-logo-text{font-family:var(--fd);font-weight:800;font-size:20px;color:var(--blue);line-height:1;white-space:nowrap}
-.nav-logo-sub{font-size:10px;color:var(--gray);font-weight:400;display:block;margin-top:1px;white-space:nowrap}
-.nav-links{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
-.nav-links a{text-decoration:none;color:var(--text);font-size:14px;font-weight:500;transition:color .2s}
-.nav-links a:hover{color:var(--blue)}
-/* ── Semántica UL/LI sin estilos de lista ── */
-.nav-links li,.footer-links li{list-style:none;margin:0;padding:0}
-.nav-links,.footer-links{list-style:none;margin:0;padding:0}
-.nav-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center}
-.btn-wa{background:var(--green);color:#fff;border:none;padding:9px 16px;border-radius:8px;font-family:var(--fb);font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;text-decoration:none;transition:opacity .2s,background .2s;white-space:nowrap}
-.btn-wa:hover{opacity:.88;background:#059669}
-.btn-ig{background:#E4405F;color:#fff;border:none;padding:9px 16px;border-radius:8px;font-family:var(--fb);font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;text-decoration:none;transition:opacity .2s,background .2s;white-space:nowrap}
-.btn-ig:hover{opacity:.88;background:#cc3750}
-.btn-cart{position:relative;background:var(--blue-p);border:none;width:42px;height:42px;border-radius:10px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:background .2s}
-.btn-cart:hover{background:#dde8ff}
-.cart-badge{position:absolute;top:-4px;right:-4px;background:var(--blue);color:#fff;font-size:10px;font-weight:700;width:18px;height:18px;border-radius:50%;display:none;align-items:center;justify-content:center}
-.cart-badge.show{display:flex}
+  <style>
+    :root{
+      --azul:#1B50E8; --azul-osc:#1640B8; --amarillo:#FFD400; --rosa:#FF2E7E;
+      --tinta:#14141A; --gris:#6B6B75; --gris-claro:#9A9AA3; --linea:#ECECEE;
+      --fondo:#FFFFFF; --fondo-2:#FAFAF8; --placeholder:#F0F0EC; --negro:#0E0E16;
+      --f:"Plus Jakarta Sans", system-ui, sans-serif; --ancho:1180px; --radio:16px;
+    }
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    html{ scroll-behavior:smooth; }
+    body{ font-family:var(--f); color:var(--tinta); background:var(--fondo); line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+    img{ display:block; max-width:100%; }
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ width:100%; max-width:var(--ancho); margin:0 auto; padding:0 24px; }
+    h1,h2,h3{ line-height:1.1; letter-spacing:-.02em; font-weight:800; }
+    .eyebrow{ font-size:.78rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--azul); display:inline-block; margin-bottom:14px; }
+    .skip{ position:absolute; left:-9999px; background:var(--tinta); color:#fff; padding:10px 16px; z-index:9999; }
+    .skip:focus{ left:0; top:0; }
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible{ outline:3px solid var(--azul); outline-offset:3px; border-radius:8px; }
 
-/* ══════════════════════════════════════════════════
-   HERO — before/after slider (overflow:hidden technique)
-   Each side clips its OWN half via parent width+overflow
-   Content inside spans 100vw so it appears screen-centered
-   ══════════════════════════════════════════════════ */
-#hero{
-  position:relative;width:100%;height:100vh;min-height:560px;
-  overflow:hidden;cursor:col-resize;user-select:none;-webkit-user-select:none;
-}
+    /* BOTONES */
+    .btn{ display:inline-flex; align-items:center; gap:9px; font-family:var(--f); font-weight:700; font-size:1rem; padding:14px 26px; border-radius:999px; border:2px solid transparent; cursor:pointer; transition:transform .18s, background .18s, box-shadow .18s, color .18s, border-color .18s; }
+    .btn svg{ width:18px; height:18px; }
+    .btn--primary{ background:var(--azul); color:#fff; }
+    .btn--primary:hover{ background:var(--azul-osc); transform:translateY(-2px); box-shadow:0 12px 28px -12px rgba(27,80,232,.7); }
+    .btn--light{ background:#fff; color:var(--azul); }
+    .btn--light:hover{ transform:translateY(-2px); box-shadow:0 12px 28px -14px rgba(0,0,0,.3); }
+    .btn--ghost{ background:transparent; color:var(--tinta); border-color:var(--linea); }
+    .btn--ghost:hover{ border-color:var(--tinta); transform:translateY(-2px); }
+    /* Botón de acceso a VorticeDev (marca aliada, con SUS colores: magenta/morado) */
+    .btn--vortice{ background:linear-gradient(100deg,#EC1E79,#8B3DFF); color:#fff; padding:9px 17px; font-size:.85rem; box-shadow:0 10px 26px -12px rgba(236,30,121,.8); }
+    .btn--vortice:hover{ transform:translateY(-2px); box-shadow:0 16px 34px -12px rgba(236,30,121,1); }
+    .btn--vortice img{ width:26px; height:26px; border-radius:8px; object-fit:cover; }
 
-/* LEFT SIDE — blue designed */
-#heroLeft{
-  position:absolute;top:0;bottom:0;left:0;
-  width:50%;          /* JS updates this */
-  overflow:hidden;
-  z-index:1;
-}
-#heroLeftBg{
-  position:absolute;top:0;bottom:0;left:0;
-  width:100vw;        /* always full screen width → gradient looks full */
-  background:linear-gradient(135deg,#0d2b8a 0%,#1B50E8 50%,#4B7BF5 100%);
-}
-#heroLeftContent{
-  position:absolute;top:0;bottom:0;left:0;
-  width:100vw;        /* full screen → text centers correctly */
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:80px 5% 240px;text-align:center;
-}
-.hero-badge-d{
-  display:inline-flex;align-items:center;gap:6px;
-  background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);
-  border-radius:50px;padding:6px 16px;font-size:13px;font-weight:600;
-  color:#fff;margin-bottom:18px;
-}
-.hero-title-d{
-  font-family:var(--fd);font-weight:900;font-size:clamp(44px,7.5vw,92px);
-  line-height:.92;color:#fff;margin-bottom:16px;letter-spacing:-1px;
-}
-.hero-sub-d{
-  font-size:clamp(14px,1.8vw,18px);color:rgba(255,255,255,.82);
-  margin-bottom:28px;max-width:480px;
-}
-.hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.btn-primary{
-  background:#fff;color:var(--blue);border:none;padding:14px 28px;border-radius:50px;
-  font-family:var(--fb);font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;
-  display:inline-flex;align-items:center;gap:8px;
-  box-shadow:0 4px 20px rgba(0,0,0,.2);transition:transform .2s,box-shadow .2s;
-}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,.25)}
-.btn-outline{
-  background:transparent;color:#fff;border:2px solid rgba(255,255,255,.5);
-  padding:14px 28px;border-radius:50px;font-family:var(--fb);font-size:15px;font-weight:600;
-  cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .2s;
-}
-.btn-outline:hover{background:rgba(255,255,255,.12);border-color:#fff}
+    /* NAV */
+    .nav{ position:fixed; inset:0 0 auto 0; z-index:100; background:rgba(255,255,255,.85); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); transition:box-shadow .3s, padding .3s; }
+    .nav--scrolled{ box-shadow:0 1px 0 var(--linea), 0 8px 30px -20px rgba(0,0,0,.3); }
+    .nav-in{ display:flex; align-items:center; justify-content:space-between; padding:14px 24px; max-width:var(--ancho); margin:0 auto; transition:padding .3s; }
+    .nav--scrolled .nav-in{ padding:10px 24px; }
+    .nav-logo{ display:flex; align-items:center; gap:10px; }
+    .nav-logo img{ height:40px; width:auto; flex-shrink:0; }
+    .nav-logo b{ font-size:1.15rem; font-weight:800; letter-spacing:-.02em; line-height:1; }
+    .nav-logo b small{ display:block; font-size:.6rem; font-weight:600; letter-spacing:.1em; color:var(--gris); text-transform:uppercase; margin-top:3px; }
+    .nav-links{ display:flex; align-items:center; gap:30px; list-style:none; }
+    /* Animación de texto: el texto sube y entra una copia azul desde abajo */
+    .navlink{ position:relative; display:inline-block; overflow:hidden; line-height:1.5; font-size:.95rem; font-weight:600; }
+    .navlink span{ display:block; transition:transform .32s cubic-bezier(.16,1,.3,1); }
+    .navlink span:nth-child(2){ position:absolute; top:100%; left:0; color:var(--azul); }
+    .navlink:hover span, .navlink:focus span, .navlink:active span{ transform:translateY(-100%); }
+    .nav-right{ display:flex; align-items:center; gap:14px; }
+    .menu-only{ display:none; }
+    .burger{ display:none; flex-direction:column; gap:5px; background:none; border:0; cursor:pointer; padding:8px; z-index:101; }
+    .burger span{ width:24px; height:2px; background:var(--tinta); transition:.3s; }
 
-/* RIGHT SIDE — gray plain */
-#heroRight{
-  position:absolute;top:0;bottom:0;right:0;
-  width:50%;          /* JS updates this */
-  overflow:hidden;
-  z-index:1;
-}
-#heroRightBg{
-  position:absolute;top:0;bottom:0;right:0;
-  width:100vw;
-  background:#cecece;
-}
-#heroRightBg::before{
-  content:'';position:absolute;inset:0;
-  background-image:radial-gradient(#aaa 1px,transparent 1px);
-  background-size:24px 24px;opacity:.25;
-}
-#heroRightContent{
-  position:absolute;top:0;bottom:0;right:0;
-  width:100vw;        /* full screen → text centers correctly */
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:80px 5% 180px;text-align:center;
-}
-.hero-badge-p{
-  display:inline-flex;align-items:center;gap:6px;
-  background:rgba(0,0,0,.08);border:1px solid rgba(0,0,0,.18);
-  border-radius:50px;padding:6px 16px;font-size:13px;font-weight:600;
-  color:#333;margin-bottom:18px;
-}
-.hero-title-p{
-  font-family:'Times New Roman',serif;font-weight:700;
-  font-size:clamp(26px,4vw,52px);color:#1a1a1a;
-  margin-bottom:14px;font-style:italic;
-}
-.hero-sub-p{font-size:14px;color:#555;font-family:'Times New Roman',serif;font-style:italic;}
+    /* HERO */
+    .hero{ padding:150px 0 70px; }
+    .hero-grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center; }
+    .hero h1{ font-size:clamp(2.6rem,5.5vw,4.6rem); margin-bottom:22px; }
+    .hl{ background-image:linear-gradient(transparent 60%, var(--amarillo) 60%); background-repeat:no-repeat; background-position:left center; background-size:0% 100%; padding:0 3px; animation:hl-sweep .85s ease .7s forwards; }
+    @keyframes hl-sweep{ to{ background-size:100% 100%; } }
+    .hero p{ font-size:clamp(1.05rem,1.4vw,1.22rem); color:var(--gris); max-width:520px; margin-bottom:30px; }
+    .hero-ctas{ display:flex; flex-wrap:wrap; gap:14px; align-items:center; margin-bottom:30px; }
+    .hero-trust{ display:flex; flex-wrap:wrap; gap:22px; }
+    .hero-trust span{ display:flex; align-items:center; gap:8px; font-size:.9rem; color:var(--gris); font-weight:500; }
+    .hero-trust svg{ width:18px; height:18px; color:var(--azul); flex-shrink:0; }
+    .hero-img{ position:relative; aspect-ratio:4/3.4; border-radius:24px; overflow:hidden; background:var(--placeholder); }
+    .hero-img img{ width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .5s; }
+    .hero-img img.is-loaded{ opacity:1; }
+    .ph{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; color:var(--gris-claro); }
+    .ph svg{ width:34px; height:34px; }
+    .ph span{ font-size:.82rem; font-weight:500; text-align:center; padding:0 10px; }
 
-/* ── CARD SHOWCASE ── */
-.hero-card-wrap{
-  position:absolute;bottom:12px;left:0;right:0;
-  display:flex;justify-content:center;z-index:5;pointer-events:none;
-}
-.hero-card-stage{
-  position:relative;
-  width:min(360px,70vw);height:min(196px,43vw);
-  transform:scale(0.96);
-  transform-origin:center bottom;
-}
-/* Gray card: always visible, full width */
-.hcard-gray{
-  position:absolute;inset:0;border-radius:16px;
-  box-shadow:var(--sh-lg);overflow:hidden;display:flex;
-}
-.hcg-l{flex:1;background:#b2b2b2;padding:18px;display:flex;flex-direction:column;justify-content:space-between}
-.hcg-logo{width:34px;height:34px;border-radius:50%;background:#999;border:2px solid #888;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:800;color:#ddd;font-size:13px}
-.hcg-name{font-family:var(--fd);font-size:clamp(12px,3vw,19px);font-weight:800;color:#ddd;line-height:1.1}
-.hcg-cat{font-size:10px;color:#bbb;margin-top:2px}
-.hcg-contact{font-size:9px;color:#ccc;display:flex;flex-direction:column;gap:2px}
-.hcg-accent{width:7px;background:#888;flex-shrink:0}
-.hcg-r{flex:1;background:#e5e5e5;padding:14px 16px;display:flex;flex-direction:column;justify-content:space-between;font-family:'Times New Roman',serif;color:#555}
-.hcg-rtitle{font-size:clamp(9px,2vw,12px);font-weight:bold;text-transform:uppercase;line-height:1.3}
-.hcg-rsub{font-size:9px;color:#666;line-height:1.5}
-.hcg-rcontact{font-size:9px;color:#555;border-top:1px solid #ccc;padding-top:4px}
-/* Color card: clips to left of slider */
-.hcard-color{
-  position:absolute;inset:0;border-radius:16px;
-  box-shadow:var(--sh-lg);overflow:hidden;display:flex;
-  clip-path:polygon(0% 0%,50% 0%,50% 100%,0% 100%);
-}
-.hcc-l{flex:1;background:linear-gradient(135deg,#1B50E8,#4B7BF5);padding:18px;display:flex;flex-direction:column;justify-content:space-between}
-.hcc-logo{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:800;color:#fff;font-size:13px}
-.hcc-name{font-family:var(--fd);font-size:clamp(12px,3vw,19px);font-weight:800;color:#fff;line-height:1.1}
-.hcc-cat{font-size:10px;color:rgba(255,255,255,.75);margin-top:2px}
-.hcc-contact{font-size:9px;color:rgba(255,255,255,.85);display:flex;flex-direction:column;gap:2px}
-.hcc-accent{width:7px;background:linear-gradient(180deg,#FFD700,#FFA500);flex-shrink:0}
-.hcc-r{flex:1;background:#f9f9f9;padding:14px 16px;display:flex;flex-direction:column;justify-content:space-between;font-family:'Times New Roman',serif;color:#111}
-.hcc-rtitle{font-size:clamp(9px,2vw,12px);font-weight:bold;text-transform:uppercase;line-height:1.3}
-.hcc-rsub{font-size:9px;color:#444;line-height:1.5}
-.hcc-rcontact{font-size:9px;color:#333;border-top:1px solid #ccc;padding-top:4px}
+    /* MARQUEE FINO (términos de imprenta) */
+    .strip{ background:var(--negro); border-top:2px solid var(--azul); overflow:hidden; padding:9px 0; }
+    .marquee{ display:flex; white-space:nowrap; animation:scroll 30s linear infinite; }
+    .marquee:hover{ animation-play-state:paused; }
+    .marquee span{ font-weight:700; font-size:1rem; letter-spacing:.06em; text-transform:uppercase; color:#E9E9F2; display:inline-flex; align-items:center; }
+    .marquee span::after{ content:""; width:7px; height:7px; border-radius:50%; background:var(--azul); margin:0 26px; }
+    @keyframes scroll{ to{ transform:translateX(-50%); } }
 
-.card-lbl{position:absolute;bottom:-22px;font-size:10px;font-weight:600;letter-spacing:.5px;text-transform:uppercase}
-.card-lbl-d{left:8%;color:rgba(255,255,255,.55)}
-.card-lbl-p{right:4%;color:rgba(0,0,0,.35)}
+    /* CONFIANZA */
+    .trust{ background:#fff; border-top:1px solid var(--linea); border-bottom:1px solid var(--linea); }
+    .trust-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; padding:36px 0; }
+    .trust-item{ display:flex; gap:13px; align-items:flex-start; }
+    .trust-item .ic{ width:40px; height:40px; border-radius:11px; background:#fff; border:1px solid var(--linea); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .trust-item .ic svg{ width:20px; height:20px; color:var(--azul); }
+    .trust-item b{ display:block; font-size:.98rem; font-weight:700; }
+    .trust-item p{ font-size:.85rem; color:var(--gris); }
 
-/* ── SLIDER LINE + HANDLE ── */
-#splitLine{
-  position:absolute;top:0;bottom:0;left:50%;width:3px;
-  background:#fff;box-shadow:0 0 18px rgba(255,255,255,.55);
-  transform:translateX(-50%);z-index:10;pointer-events:none;
-}
-#splitHandle{
-  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  width:52px;height:52px;background:#fff;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 4px 22px rgba(0,0,0,.26);pointer-events:auto;cursor:col-resize;
-}
-#splitHandle svg{width:22px;height:22px}
-.drag-hint{
-  position:absolute;bottom:8px;left:50%;transform:translateX(-50%);
-  font-size:12px;color:rgba(255,255,255,.6);z-index:10;white-space:nowrap;
-  animation:phint 2.5s ease-in-out infinite;
-}
-@keyframes phint{0%,100%{opacity:.4}50%{opacity:.9}}
+    /* SECCIONES */
+    .section{ padding:clamp(70px,9vw,120px) 0; }
+    .section--soft{ background:#fff; }
+    .head{ max-width:680px; margin-bottom:54px; }
+    .head h2{ font-size:clamp(2rem,4.5vw,3.3rem); margin-bottom:14px; }
+    .head p{ color:var(--gris); font-size:clamp(1rem,1.3vw,1.15rem); }
+    .head--center{ margin-left:auto; margin-right:auto; text-align:center; }
 
-/* ── TRUST BAR ── */
-.trust-bar{background:var(--blue);padding:13px 5%;display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap}
-.trust-item{display:flex;align-items:center;gap:7px;color:#fff;font-size:13px;font-weight:500}
+    /* SERVICIOS */
+    .grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+    .card{ display:block; border:1px solid var(--linea); border-radius:var(--radio); overflow:hidden; background:#fff; cursor:pointer; transition:transform .25s, box-shadow .25s, border-color .25s; text-align:left; font:inherit; color:inherit; width:100%; padding:0; }
+    .card:hover{ transform:translateY(-6px); box-shadow:0 24px 50px -30px rgba(20,20,26,.35); border-color:#e0e0e2; }
+    .card-img{ position:relative; aspect-ratio:4/3; background:var(--placeholder); overflow:hidden; }
+    .card-img img{ width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .4s, transform .5s; }
+    .card-img img.is-loaded{ opacity:1; }
+    .card:hover .card-img img.is-loaded{ transform:scale(1.05); }
+    .card-body{ padding:18px 18px 22px; }
+    .card-body h3{ font-size:1.15rem; font-weight:700; margin-bottom:6px; }
+    .card-body p{ font-size:.88rem; color:var(--gris); line-height:1.5; }
+    .card-go{ margin-top:12px; font-size:.86rem; font-weight:700; color:var(--azul); display:inline-flex; align-items:center; gap:6px; }
+    .card-go svg{ width:15px; height:15px; transition:transform .2s; }
+    .card:hover .card-go svg{ transform:translateX(4px); }
 
-/* ── SECTIONS ── */
-.section-title{font-family:var(--fd);font-weight:900;font-size:clamp(32px,5vw,54px);line-height:1;color:var(--dark);margin-bottom:12px;text-align:center}
-.section-sub{font-size:15px;color:var(--gray);max-width:560px;line-height:1.6;text-align:center;margin:0 auto 32px auto}
-/* Ocultar precios para forzar contacto/negociación */
-.prd-price, .extra-price, .extra-price-free, .cart-total-row, .wtp-amount, .wtp-label {display:none!important}
-.prd-table th:nth-child(2), .prd-table td:nth-child(2) {display:none!important}
+    /* CÓMO FUNCIONA */
+    .steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+    .step{ background:#fff; border:1px solid var(--linea); border-radius:var(--radio); padding:30px 26px; }
+    .step .n{ width:44px; height:44px; border-radius:12px; background:#EEF3FF; color:var(--azul); display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.1rem; margin-bottom:18px; }
+    .step h3{ font-size:1.25rem; font-weight:700; margin-bottom:8px; }
+    .step p{ color:var(--gris); font-size:.95rem; }
 
+    /* REVISIÓN DE ARCHIVOS */
+    .rev{ display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
+    .rev-points{ list-style:none; display:grid; gap:11px; margin:22px 0 26px; }
+    .rev-points li{ display:flex; gap:11px; align-items:center; font-weight:500; }
+    .rev-points svg{ width:20px; height:20px; color:var(--azul); flex-shrink:0; }
+    .rev-doc{ background:#fff; border:1px solid var(--linea); border-radius:20px; padding:30px; box-shadow:0 30px 60px -40px rgba(20,20,26,.4); }
+    .rev-doc .doc-ic{ width:54px; height:54px; border-radius:14px; background:#EEF3FF; color:var(--azul); display:flex; align-items:center; justify-content:center; margin-bottom:16px; }
+    .rev-doc .doc-ic svg{ width:26px; height:26px; }
+    .rev-doc h3{ font-size:1.3rem; margin-bottom:6px; }
+    .rev-doc p{ color:var(--gris); font-size:.92rem; margin-bottom:18px; }
 
+    /* HOSTELERÍA (única con color) */
+    .host{ background:var(--azul); color:#fff; border-radius:28px; padding:clamp(40px,6vw,70px); display:grid; grid-template-columns:1.1fr .9fr; gap:48px; align-items:center; }
+    .host .eyebrow{ color:#fff; opacity:.85; }
+    .host h2{ font-size:clamp(1.9rem,4vw,3rem); margin-bottom:16px; }
+    .host p{ opacity:.92; margin-bottom:28px; max-width:440px; }
+    .host-list{ list-style:none; display:grid; gap:2px; }
+    .host-list li{ display:flex; gap:12px; align-items:center; padding:13px 0; border-top:1px solid rgba(255,255,255,.22); font-weight:500; }
+    .host-list li svg{ width:20px; height:20px; flex-shrink:0; }
 
-/* ── SERVICES ── */
-#servicios{background:var(--gray-l)}
-.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-top:36px}
-.svc-card{background:#fff;border-radius:var(--r);border:1px solid var(--border);overflow:hidden;transition:box-shadow .2s}
-.svc-card:hover{box-shadow:var(--sh)}
-.svc-header{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;cursor:pointer;gap:12px}
-.svc-icon-box{width:48px;height:48px;border-radius:10px;background:var(--blue-p);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:22px}
-.svc-title{font-family:var(--fd);font-weight:700;font-size:17px;color:var(--dark)}
-.svc-desc{font-size:11px;color:var(--gray);margin-top:1px}
-.svc-toggle{width:28px;height:28px;border-radius:50%;background:var(--gray-l);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .3s}
-.svc-card.open .svc-toggle{background:var(--blue);transform:rotate(45deg)}
-.svc-toggle svg{width:11px;height:11px;stroke:var(--gray);stroke-width:2.5;fill:none}
-.svc-card.open .svc-toggle svg{stroke:#fff}
-.svc-body{max-height:0;overflow:hidden;transition:max-height .42s ease}
-.svc-card.open .svc-body{max-height:900px}
-.size-ref-bar{display:flex;align-items:flex-end;gap:10px;padding:10px 18px;background:#f0f5ff;border-top:1px solid #dce8ff;overflow-x:auto;flex-wrap:nowrap}
-.sz-item{display:flex;flex-direction:column;align-items:center;gap:4px;flex-shrink:0}
-.sz-box{background:#fff;border:1.5px solid var(--blue);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:700;color:var(--blue);border-radius:3px;cursor:pointer;transition:all .22s}
-.sz-box.active{background:var(--blue);color:#fff;border-color:var(--blue)}
-.sz-lbl{font-size:9px;color:var(--gray);white-space:nowrap;font-weight:500}
-.size-note{font-size:10px;color:var(--gray);padding:5px 18px 8px;font-style:italic}
-.prd-table{width:100%;border-collapse:collapse}
-.prd-table th{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--gray);font-weight:600;padding:8px 18px;text-align:left;border-top:1px solid var(--border);background:var(--gray-l)}
-.prd-table th:last-child{text-align:right}
-.prd-table td{padding:9px 18px;font-size:13px;border-top:1px solid var(--border);color:var(--text);vertical-align:middle}
-.prd-table tr:hover td{background:#fafbff}
-.prd-name{font-weight:500;line-height:1.35}
-.prd.web-tiers{display:flex;flex-direction:column;gap:15px;margin-top:15px;height:auto;overflow:visible}
-.web-tier{border:1px solid #eee;border-radius:12px;overflow:hidden;background:#fff;transition:box-shadow .3s;height:auto}
-.web-tier:hover{box-shadow:0 8px 24px rgba(0,0,0,.08)}
-.web-tier-head{padding:12px 16px;color:#fff;display:flex;justify-content:space-between;align-items:center;font-size:14px}
-.web-tier-body{padding:16px;display:flex;align-items:center;justify-content:space-between;gap:15px}
-.wtp-label{font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:0.5px}
-.wtp-amount{font-family:var(--fd);font-size:24px;font-weight:800}
-.web-tier-btns{display:flex;gap:10px}
-.web-tier-badge{background:rgba(255,255,255,.2);padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700}
-.web-details-pane{max-height:0;overflow:hidden;transition:all .4s ease;background:#fafafa;border-top:0 solid #eee}
-.web-details-pane.open{max-height:1000px;border-top-width:1px}
-hover{background:var(--blue-d)}
-.btn-add.added{background:var(--green)}
-.svc-note{font-size:11px;color:var(--gray);padding:8px 18px 12px;font-style:italic}
-.web-tiers{padding:12px 16px}
-.web-tier{border-radius:10px;overflow:hidden;margin-bottom:10px;border:1.5px solid #e0e8ff}
-.web-tier-head{padding:9px 14px;color:#fff;display:flex;justify-content:space-between;align-items:center}
-.web-tier-head strong{font-family:var(--fd);font-size:16px;font-weight:800}
-.web-tier-badge{font-size:10px;font-weight:700;background:rgba(255,255,255,.25);padding:2px 8px;border-radius:4px}
-.web-tier-body{padding:10px 14px;display:flex;gap:18px;align-items:center;background:#fff}
-.wtp-label{font-size:10px;color:var(--gray);font-weight:600;text-transform:uppercase;margin-bottom:2px}
-.wtp-amount{font-size:20px;font-weight:700}
-.web-tier-btns{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
-.web-extras{margin:0 0 12px;border:1px solid var(--border);border-radius:10px;overflow:hidden}
-.web-extras-head{background:var(--gray-l);padding:7px 14px;font-size:10px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px}
+    /* GALERÍA */
+    .gallery{ display:grid; grid-template-columns:repeat(6,1fr); grid-auto-rows:200px; gap:16px; }
+    .tile{ position:relative; border-radius:var(--radio); overflow:hidden; background:var(--placeholder); }
+    .tile img{ width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .5s, transform .6s; }
+    .tile img.is-loaded{ opacity:1; }
+    .tile:hover img.is-loaded{ transform:scale(1.05); }
+    .tile-cap{ position:absolute; left:14px; bottom:12px; font-size:.78rem; font-weight:600; color:#fff; text-shadow:0 1px 6px rgba(0,0,0,.5); z-index:1; }
+    .g-w2{ grid-column:span 2; } .g-w3{ grid-column:span 3; } .g-h2{ grid-row:span 2; }
 
-/* ══════════════════════════════════════════════════
-   EXTRAS & DISEÑO — interactive toggle cards
-   ══════════════════════════════════════════════════ */
-#diferencial{background:#fff}
-.extras-alert{
-  display:flex;align-items:flex-start;gap:12px;
-  background:#fffbeb;border:1.5px solid #fcd34d;border-radius:12px;
-  padding:14px 18px;margin-bottom:28px;
-}
-.extras-alert-icon{font-size:22px;flex-shrink:0;margin-top:1px}
-.extras-alert-text{font-size:13px;color:#92400e;line-height:1.5}
-.extras-alert-text strong{color:#78350f;font-weight:700}
+    /* CONTACTO */
+    .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; }
+    .contact-left h2{ font-size:clamp(2rem,4.5vw,3.2rem); margin-bottom:14px; }
+    .contact-left p{ color:var(--gris); margin-bottom:22px; max-width:420px; }
+    .contact-pts{ list-style:none; display:grid; gap:12px; }
+    .contact-pts li{ display:flex; gap:11px; align-items:center; font-weight:500; }
+    .contact-pts svg{ width:20px; height:20px; color:var(--azul); flex-shrink:0; }
+    .form{ background:#fff; border:1px solid var(--linea); border-radius:24px; padding:32px; box-shadow:0 30px 60px -40px rgba(20,20,26,.4); }
+    .form .row{ margin-bottom:16px; }
+    .form label{ display:block; font-size:.85rem; font-weight:700; margin-bottom:7px; }
+    .form input, .form select, .form textarea{ width:100%; font-family:var(--f); font-size:1rem; padding:13px 15px; border:1.5px solid var(--linea); border-radius:12px; background:#fff; color:var(--tinta); transition:border-color .2s; }
+    .form input:focus, .form select:focus, .form textarea:focus{ border-color:var(--azul); outline:none; }
+    .form textarea{ min-height:96px; resize:vertical; }
+    .form .err{ display:none; color:var(--rosa); font-size:.8rem; font-weight:600; margin-top:6px; }
+    .form .row.bad input{ border-color:var(--rosa); } .form .row.bad .err{ display:block; }
+    .form .btn{ width:100%; justify-content:center; margin-top:6px; }
+    .form .ok{ display:none; text-align:center; padding:10px 0; }
+    .form .ok.show{ display:block; }
+    .form .ok .tick{ width:60px; height:60px; border-radius:50%; background:#EAF7EE; color:#1FA851; display:flex; align-items:center; justify-content:center; margin:0 auto 14px; }
+    .form .ok .tick svg{ width:30px; height:30px; }
+    .form .ok h3{ font-size:1.3rem; margin-bottom:8px; }
+    .form .ok p{ color:var(--gris); margin-bottom:16px; }
 
-.extras-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-bottom:40px}
+    /* FOOTER estilo Pentagram */
+    .footer{ background:var(--negro); color:#fff; padding:72px 0 36px; overflow:hidden; }
+    .footer-name{ font-size:clamp(1.9rem,11.5vw,9.5rem); font-weight:800; line-height:1; letter-spacing:-.04em; white-space:nowrap; text-transform:uppercase; text-align:center; margin:0 0 34px; }
+    .footer-contact{ display:flex; flex-wrap:wrap; justify-content:center; gap:14px 26px; margin-bottom:34px; }
+    .footer-contact a, .footer-contact span{ display:inline-flex; align-items:center; gap:8px; font-size:.95rem; color:#c9c9d4; transition:color .2s; }
+    .footer-contact a:hover{ color:#fff; }
+    .footer-contact svg{ width:17px; height:17px; }
+    .footer-map{ text-align:center; margin-bottom:36px; }
+    .btn--map{ background:rgba(255,255,255,.07); border-color:rgba(255,255,255,.28); color:#fff; }
+    .btn--map:hover{ background:#fff; color:var(--negro); border-color:#fff; }
+    .btn--map svg{ width:18px; height:18px; }
+    .footer-row{ display:flex; flex-wrap:wrap; justify-content:center; gap:14px; padding-top:24px; border-top:1px solid #26263a; }
+    .footer-row nav{ display:flex; flex-wrap:wrap; gap:22px; }
+    .footer-row a{ font-size:.92rem; color:#c9c9d4; transition:color .2s; }
+    .footer-row a:hover{ color:#fff; }
+    .footer-row .cr{ font-size:.86rem; color:#6f6f82; }
 
-.extra-card{
-  background:#fff;border:1.5px solid var(--border);border-radius:var(--r);
-  padding:18px;display:flex;gap:14px;align-items:flex-start;
-  transition:border-color .2s,box-shadow .2s;cursor:pointer;
-}
-.extra-card:hover{border-color:var(--blue-l);box-shadow:var(--sh)}
-.extra-card.active{border-color:var(--blue);background:#f7f9ff;box-shadow:0 0 0 2px rgba(27,80,232,.12)}
-.extra-card-icon{font-size:28px;flex-shrink:0;margin-top:2px}
-.extra-card-body{flex:1}
-.extra-card-title{font-family:var(--fd);font-weight:800;font-size:18px;color:var(--dark);margin-bottom:4px}
-.extra-card-desc{font-size:13px;color:var(--gray);line-height:1.5;margin-bottom:6px}
-.extra-card-tag{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;padding:2px 8px;border-radius:4px}
-.tag-optional{background:#f0f5ff;color:var(--blue)}
-.tag-free{background:#e7fef5;color:#065f46}
-.extra-card-right{display:flex;flex-direction:column;align-items:center;gap:8px;flex-shrink:0}
-.extra-price{font-family:var(--fd);font-weight:900;font-size:22px;color:var(--blue);white-space:nowrap}
-.extra-price-free{font-family:var(--fd);font-weight:900;font-size:16px;color:var(--green);white-space:nowrap}
+    /* FAB */
+    .fab{ position:fixed; bottom:22px; right:22px; z-index:150; width:58px; height:58px; border-radius:50%; background:#25D366; display:flex; align-items:center; justify-content:center; box-shadow:0 12px 30px -8px rgba(0,0,0,.4); transition:transform .25s; }
+    .fab:hover{ transform:scale(1.08); }
+    .fab svg{ width:30px; height:30px; }
 
-/* Toggle switch */
-.toggle-wrap{position:relative;width:46px;height:26px;flex-shrink:0}
-.toggle-wrap input{position:absolute;opacity:0;width:0;height:0}
-.toggle-track{
-  position:absolute;inset:0;
-  background:#d1d5db;border-radius:13px;
-  transition:background .25s;cursor:pointer;
-}
-.toggle-wrap input:checked + .toggle-track{background:var(--blue)}
-.toggle-thumb{
-  position:absolute;top:3px;left:3px;
-  width:20px;height:20px;border-radius:50%;
-  background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.18);
-  transition:left .25s;pointer-events:none;
-}
-.toggle-wrap input:checked ~ .toggle-thumb{left:23px}
+    /* MODAL de servicio */
+    .modal{ position:fixed; inset:0; z-index:300; display:none; align-items:center; justify-content:center; padding:20px; }
+    .modal.open{ display:flex; }
+    .modal-back{ position:absolute; inset:0; background:rgba(14,14,22,.55); backdrop-filter:blur(3px); animation:fade .25s ease; }
+    .modal-card{ position:relative; background:#fff; border-radius:24px; max-width:560px; width:100%; max-height:88vh; overflow-y:auto; padding:34px; box-shadow:0 40px 90px -30px rgba(0,0,0,.5); animation:pop .3s cubic-bezier(.16,1,.3,1); }
+    @keyframes fade{ from{ opacity:0; } } @keyframes pop{ from{ opacity:0; transform:translateY(20px) scale(.97); } }
+    .modal-x{ position:absolute; top:18px; right:18px; width:38px; height:38px; border-radius:50%; border:1px solid var(--linea); background:#fff; cursor:pointer; font-size:1.3rem; line-height:1; color:var(--gris); transition:.2s; }
+    .modal-x:hover{ background:var(--fondo-2); color:var(--tinta); }
+    .modal-card h3{ font-size:1.7rem; margin:6px 0 10px; }
+    .modal-card > p{ color:var(--gris); margin-bottom:20px; }
+    .modal-card h4{ font-size:.8rem; text-transform:uppercase; letter-spacing:.1em; color:var(--gris-claro); margin-bottom:12px; }
+    .modal-feats{ list-style:none; display:grid; gap:11px; margin-bottom:24px; }
+    .modal-feats li{ display:flex; gap:11px; align-items:flex-start; font-weight:500; font-size:.97rem; }
+    .modal-feats svg{ width:19px; height:19px; color:var(--azul); flex-shrink:0; margin-top:3px; }
+    .modal-rev{ display:flex; gap:16px; align-items:center; justify-content:space-between; flex-wrap:wrap; background:var(--fondo-2); border:1px solid var(--linea); border-radius:16px; padding:18px; margin-bottom:22px; }
+    .modal-rev b{ font-size:.98rem; } .modal-rev p{ font-size:.82rem; color:var(--gris); margin-top:2px; }
+    .modal-rev .btn{ padding:11px 18px; font-size:.88rem; }
+    .modal-cta{ display:flex; gap:12px; flex-wrap:wrap; }
+    .modal-cta .btn{ flex:1; justify-content:center; min-width:160px; }
 
-/* Trust strip centered */
-.trust-strip{
-  display:flex;justify-content:center;
-  gap:16px;margin:28px auto 0;
-  padding-top:28px;border-top:1px solid var(--border);
-  flex-wrap:wrap;max-width:1100px;
-}
-.trust-strip-item{
-  display:flex;align-items:flex-start;gap:12px;padding:16px;
-  border-radius:12px;border:1px solid var(--border);
-  max-width:260px;flex:1 1 240px;
-}
+    /* APARICIÓN AL SCROLL */
+    .reveal{ opacity:0; transform:translateY(20px); transition:opacity .6s ease, transform .6s ease; }
+    .reveal.vis{ opacity:1; transform:none; }
+    .reveal[data-d="1"]{ transition-delay:.06s; } .reveal[data-d="2"]{ transition-delay:.12s; }
+    .reveal[data-d="3"]{ transition-delay:.18s; } .reveal[data-d="4"]{ transition-delay:.24s; }
 
-.tsi-icon{font-size:24px;flex-shrink:0}
-.tsi-title{font-family:var(--fd);font-weight:800;font-size:16px;color:var(--dark);margin-bottom:3px}
-.tsi-text{font-size:12px;color:var(--gray);line-height:1.5}
-
-/* ── CTA ── */
-#cta{background:linear-gradient(135deg,#0d2b8a 0%,var(--blue) 60%,var(--blue-l) 100%);text-align:center;padding:140px 5% 120px}
-#cta .section-title{color:#fff;margin-top:20px;font-size:clamp(40px,6vw,72px)}
-#cta .section-sub{color:rgba(255,255,255,.8);margin:0 auto 48px;max-width:700px}
-
-
-.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-
-/* ── FOOTER ── */
-footer{background:var(--dark);color:rgba(255,255,255,.5);padding:100px 5% 60px;text-align:center;border-top:1px solid rgba(255,255,255,.05)}
-.footer-brand{font-family:var(--fd);font-size:24px;font-weight:800;color:#fff;margin-bottom:12px;display:block}
-.footer-links{display:flex;justify-content:center;gap:24px;margin-bottom:40px;flex-wrap:wrap;list-style:none;padding:0}
-.footer-links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:14px;transition:color .2s}
-.footer-links a:hover{color:#fff}
-.footer-legal{background:var(--dark);padding:40px 5%;display:flex;justify-content:center;gap:20px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,0.05)}
-.footer-legal a{color:rgba(255,255,255,.3);text-decoration:none;font-size:12px;transition:color .2s}
-.footer-legal a:hover{color:#fff}
-
-
-
-/* ── OVERLAY ── */
-#overlay{position:fixed;inset:0;background:rgba(0,0,0,.42);z-index:1500;opacity:0;pointer-events:none;transition:opacity .3s}
-#overlay.show{opacity:1;pointer-events:auto}
-
-/* ── CART SIDEBAR ── */
-#cartSidebar{position:fixed;right:-110%;top:0;bottom:0;width:360px;max-width:100%;background:#fff;box-shadow:-8px 0 40px rgba(0,0,0,.15);z-index:2000;display:flex;flex-direction:column;transition:right .35s ease}
-#cartSidebar.open{right:0}
-.cart-head{padding:18px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
-.cart-head h3{font-family:var(--fd);font-size:22px;font-weight:800;color:var(--dark)}
-.cart-close{background:none;border:none;font-size:20px;cursor:pointer;color:var(--gray);padding:4px;border-radius:6px}
-.cart-close:hover{background:var(--gray-l)}
-.cart-scroll{flex:1;overflow-y:auto;padding:14px}
-.cart-empty{text-align:center;padding:40px 16px;color:var(--gray)}
-.cart-empty-icon{font-size:40px;display:block;margin-bottom:10px}
-.cart-item{display:flex;align-items:flex-start;gap:10px;padding:11px 0;border-bottom:1px solid var(--border)}
-.ci-info{flex:1}
-.ci-name{font-size:13px;font-weight:600;color:var(--text);line-height:1.3}
-.ci-price{font-size:12px;color:var(--blue);font-weight:700;margin-top:2px}
-.ci-qty{display:flex;align-items:center;gap:4px;flex-shrink:0}
-.qty-btn{width:24px;height:24px;border-radius:6px;border:1px solid var(--border);background:var(--gray-l);cursor:pointer;font-size:14px;font-weight:700;color:var(--dark);display:flex;align-items:center;justify-content:center;transition:all .15s}
-.qty-btn:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
-.qty-n{font-size:13px;font-weight:700;min-width:18px;text-align:center}
-.btn-rm{background:none;border:none;color:#ccc;cursor:pointer;font-size:13px;padding:2px;transition:color .2s}
-.btn-rm:hover{color:var(--red)}
-.cart-foot{padding:14px 18px;border-top:1px solid var(--border)}
-.cart-total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.cart-total-row span{font-size:13px;color:var(--gray)}
-.cart-total-row strong{font-family:var(--fd);font-size:26px;color:var(--dark)}
-.btn-checkout{width:100%;background:var(--blue);color:#fff;border:none;padding:14px;border-radius:10px;font-family:var(--fb);font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
-.btn-checkout:hover{background:var(--blue-d)}
-
-/* ── CHECKOUT MODAL ── */
-#checkoutModal{position:fixed;inset:0;z-index:3000;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .3s}
-#checkoutModal.show{opacity:1;pointer-events:auto}
-.modal-box{background:#fff;border-radius:20px;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;box-shadow:0 30px 80px rgba(0,0,0,.25)}
-.modal-head{background:linear-gradient(135deg,var(--blue),var(--blue-l));padding:22px 24px;color:#fff;position:sticky;top:0;z-index:1}
-.modal-head h3{font-family:var(--fd);font-size:26px;font-weight:900}
-.modal-head p{font-size:13px;opacity:.85;margin-top:3px}
-.modal-body{padding:20px 24px}
-.form-2col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.fg{margin-bottom:14px}
-.fg label{display:flex;align-items:center;gap:3px;font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px}
-.req{color:var(--red)}
-.fg input,.fg textarea{width:100%;border:1.5px solid var(--border);border-radius:10px;padding:10px 13px;font-family:var(--fb);font-size:14px;outline:none;transition:border-color .2s;background:#fff}
-.fg input:focus,.fg textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(27,80,232,.08)}
-.fg textarea{height:68px;resize:none}
-.f-err{border-color:var(--red)!important;box-shadow:0 0 0 3px rgba(239,68,68,.07)!important}
-.f-ok{border-color:var(--green)!important}
-.f-msg{font-size:11px;margin-top:3px;display:none}
-.f-msg.show-err{display:block;color:var(--red)}
-.f-msg.show-ok{display:block;color:var(--green)}
-.upload-box{border:2px dashed var(--border);border-radius:10px;padding:16px;text-align:center;cursor:pointer;background:var(--gray-l);position:relative;transition:border-color .2s}
-.upload-box:hover{border-color:var(--blue);background:#f0f5ff}
-.upload-box input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-.up-preview{margin-top:8px;display:none;align-items:center;gap:8px;background:#fff;border-radius:8px;padding:8px 12px;border:1px solid var(--border)}
-.up-preview.show{display:flex}
-.up-name{font-size:12px;font-weight:600;color:var(--text);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.btn-rm-f{background:none;border:none;color:var(--gray);cursor:pointer;font-size:14px;padding:0 4px}
-.btn-rm-f:hover{color:var(--red)}
-.wa-info{background:#e7fef5;border:1px solid #a7f3d0;border-radius:8px;padding:10px 14px;font-size:12px;color:#065f46;display:flex;gap:8px;margin-bottom:14px}
-.modal-actions{padding:0 24px 20px;display:flex;gap:10px}
-.btn-back{flex:1;background:var(--gray-l);border:none;padding:13px;border-radius:10px;font-family:var(--fb);font-size:14px;font-weight:600;cursor:pointer;color:var(--text)}
-.btn-back:hover{background:var(--border)}
-.btn-send{flex:2;background:var(--green);color:#fff;border:none;padding:13px;border-radius:10px;font-family:var(--fb);font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
-.btn-send:hover{opacity:.88}
-
-@media(max-width:1024px){
-  nav{padding:12px 4%;min-height:auto;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px}
-  .nav-links{display:flex;justify-content:center;gap:18px;width:100%;margin:0 auto}
-  .nav-actions{justify-content:center;width:100%;gap:10px}
-  .nav-logo{gap:8px}
-  .nav-logo-text{font-size:18px}
-  .nav-logo-sub{font-size:9px}
-}
-@media(max-width:768px){
-  nav{padding:10px 4%;gap:8px}
-  .nav-links{gap:14px}
-  .nav-actions{justify-content:center;gap:8px}
-  .btn-wa,.btn-ig{padding:8px 12px;font-size:12px}
-  .btn-cart{width:38px;height:38px;font-size:16px}
-  #hero{min-height:calc(100vh - 88px)}
-  #heroLeftContent{padding:60px 5% 150px}
-  #heroRightContent{padding:60px 5% 130px}
-  .hero-card-wrap{display:flex;bottom:10px}
-  .hero-card-stage{width:min(300px,82vw);height:min(174px,46vw);transform:scale(0.98)}
-  .trust-bar{gap:14px}
-  footer{flex-direction:column}
-  .form-2col{grid-template-columns:1fr}
-  #cartSidebar{width:100%}
-}
-@media(max-width:640px){
-  .nav-links{display:none}
-}
-@media(max-width:480px){
-  nav{padding:10px 3%;gap:6px}
-  .nav-logo-text{font-size:15px}
-  .nav-logo-sub{font-size:9px}
-  .btn-wa,.btn-ig{padding:7px 10px;font-size:12px}
-  .btn-cart{width:36px;height:36px}
-  .hero-card-stage{width:min(280px,82vw);height:min(160px,46vw);transform:scale(0.96)}
-  section{padding:52px 4%}
-  .services-grid{grid-template-columns:1fr}
-}
-.footer-legal{background:#0f172a;color:rgba(255,255,255,.7);padding:16px 5%;display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center;font-size:13px;border-top:1px solid rgba(255,255,255,.08)}
-.footer-legal a{color:rgba(255,255,255,.78);text-decoration:none;padding:6px 10px;border-radius:8px;transition:background .2s,color .2s}
-.footer-legal a:hover{background:rgba(59,130,246,.15);color:#93c5fd}
-/* ── SKIP LINK ── WCAG 2.1 — acceso rápido por teclado ── */
-.skip-link{position:absolute;top:-100%;left:0;background:var(--blue);color:#fff;padding:10px 18px;
-  border-radius:0 0 8px 0;font-weight:700;z-index:9999;text-decoration:none;transition:top .2s}
-.skip-link:focus{top:0}
-/* ── Focus visible WCAG 2.1 AA ── */
-*:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
-button:focus-visible,a:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
-</style>
+    /* RESPONSIVE */
+    /* Animación de iconos y vistos (checks) para que llamen más la atención */
+    @keyframes vh-pop{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.13); } }
+    @keyframes vh-float{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-4px); } }
+    .hero-trust svg, .contact-pts svg, .host-list li svg{ transform-origin:center; animation:vh-pop 3s ease-in-out infinite; }
+    .hero-trust span:nth-child(2) svg{ animation-delay:.4s; } .hero-trust span:nth-child(3) svg{ animation-delay:.8s; }
+    .contact-pts li:nth-child(2) svg{ animation-delay:.4s; } .contact-pts li:nth-child(3) svg{ animation-delay:.8s; }
+    .host-list li:nth-child(2) svg{ animation-delay:.3s; } .host-list li:nth-child(3) svg{ animation-delay:.6s; } .host-list li:nth-child(4) svg{ animation-delay:.9s; } .host-list li:nth-child(5) svg{ animation-delay:1.2s; }
+    .trust-item .ic{ animation:vh-float 3.6s ease-in-out infinite; transition:background .25s, border-color .25s; }
+    .trust-item:nth-child(2) .ic{ animation-delay:.5s; } .trust-item:nth-child(3) .ic{ animation-delay:1s; } .trust-item:nth-child(4) .ic{ animation-delay:1.5s; }
+    .trust-item:hover .ic{ background:var(--azul); border-color:var(--azul); }
+    .trust-item:hover .ic svg{ color:#fff; }
+    @media (max-width:980px){
+      .hero-grid{ grid-template-columns:1fr; gap:40px; } .hero{ padding:130px 0 56px; }
+      .trust-grid{ grid-template-columns:repeat(2,1fr); }
+      .grid{ grid-template-columns:repeat(2,1fr); }
+      .steps{ grid-template-columns:1fr; }
+      .rev,.host,.contact-grid{ grid-template-columns:1fr; }
+      .gallery{ grid-template-columns:repeat(4,1fr); }
+    }
+    @media (max-width:620px){
+      .nav{ background:#fff; -webkit-backdrop-filter:none; backdrop-filter:none; }
+      body.menu-open{ overflow:hidden; }
+      /* Menú a PANTALLA COMPLETA con apertura circular desde la hamburguesa */
+      .nav-links{ position:fixed; inset:0; width:100vw; height:100vh; height:100dvh; max-width:none; background:#fff; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:84px 26px 40px; opacity:0; pointer-events:none; clip-path:circle(0% at calc(100% - 44px) 40px); transition:opacity .4s ease, clip-path .55s cubic-bezier(.16,1,.3,1); z-index:95; }
+      .nav-links.open{ opacity:1; pointer-events:auto; clip-path:circle(150% at calc(100% - 44px) 40px); }
+      .nav-links li{ width:100%; max-width:340px; text-align:center; opacity:0; transform:translateY(18px); transition:opacity .45s ease, transform .45s cubic-bezier(.16,1,.3,1); }
+      .nav-links.open li{ opacity:1; transform:none; }
+      .nav-links.open li:nth-child(1){ transition-delay:.12s; } .nav-links.open li:nth-child(2){ transition-delay:.18s; }
+      .nav-links.open li:nth-child(3){ transition-delay:.24s; } .nav-links.open li:nth-child(4){ transition-delay:.30s; }
+      .nav-links.open li:nth-child(5){ transition-delay:.36s; } .nav-links.open li:nth-child(6){ transition-delay:.44s; }
+      .nav-links.open li:nth-child(7){ transition-delay:.50s; }
+      .navlink{ font-size:1.85rem; font-weight:800; display:inline-block; overflow:visible; padding:9px 0; letter-spacing:-.02em; }
+      .navlink span:nth-child(2){ display:none; }
+      .menu-only{ display:block; margin-top:6px; }
+      .menu-btn{ display:inline-flex; align-items:center; justify-content:center; width:100%; max-width:300px; padding:15px 22px; border-radius:14px; font-weight:800; font-size:1.05rem; transition:transform .2s, box-shadow .2s; }
+      .menu-btn:active{ transform:scale(.97); }
+      .menu-btn--vortice{ background:linear-gradient(100deg,#EC1E79,#8B3DFF); color:#fff; box-shadow:0 12px 28px -12px rgba(236,30,121,.8); }
+      .menu-btn--primary{ background:var(--azul); color:#fff; box-shadow:0 12px 28px -12px rgba(27,80,232,.7); }
+      .burger{ display:flex; z-index:101; }
+      .burger[aria-expanded="true"] span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+      .burger[aria-expanded="true"] span:nth-child(2){ opacity:0; }
+      .burger[aria-expanded="true"] span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+      .nav-right .btn{ display:none; }
+      .trust-grid{ grid-template-columns:1fr; }
+      .grid{ grid-template-columns:1fr; }
+      .gallery{ grid-template-columns:repeat(2,1fr); grid-auto-rows:160px; }
+      .g-w3,.g-w2{ grid-column:span 2; }
+      .form,.modal-card{ padding:24px; }
+    }
+    @media (prefers-reduced-motion:reduce){
+      *{ animation:none !important; transition:none !important; }
+      .reveal{ opacity:1; transform:none; }
+      .hl{ background-size:100% 100% !important; }
+    }
+  </style>
 </head>
+
 <body>
+  <a href="#servicios" class="skip">Saltar al contenido</a>
 
-<!-- Skip-link accesibilidad teclado (WCAG 2.4.1) -->
-<a class="skip-link" href="#contenido-principal">Saltar al contenido principal</a>
-
-<!-- ── HEADER + NAV principal (WAI-ARIA nav landmark) ── -->
-<header role="banner">
-  <nav aria-label="Navegación principal">
-    <a href="#" class="nav-logo" aria-label="Digital Home — inicio">
-      <img src="imagenes/logo.png" alt="Logo Digital Home Imprenta y Diseño Web Madrid" class="nav-logo-img"
-        onerror="this.style.display='none';document.getElementById('logoFB').style.display='flex'">
-      <div class="nav-logo-icon" id="logoFB" style="display:none" aria-hidden="true">DH</div>
-      <div>
-        <span class="nav-logo-text">DIGITAL HOME</span>
-        <span class="nav-logo-sub">Imprenta &amp; Diseño · Madrid</span>
-      </div>
-    </a>
-    <ul class="nav-links" role="list" aria-label="Secciones de la página">
-      <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#diferencial">Extras &amp; Diseño</a></li>
-      <li><a href="#cta">Contacto</a></li>
-    </ul>
-    <div class="nav-actions" role="group" aria-label="Acciones rápidas">
-      <a href="https://wa.me/674913178" target="_blank" rel="noopener noreferrer" class="btn-wa"
-         aria-label="Contactar por WhatsApp (abre en nueva ventana)">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="white" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.121 1.535 5.849L.057 23.945l6.261-1.644A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-1.97 0-3.81-.538-5.385-1.473l-.386-.229-4.001 1.049 1.069-3.902-.251-.4A9.777 9.777 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
-        <span>WhatsApp</span>
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <div class="nav-in">
+      <a href="#" class="nav-logo" aria-label="Digital Home — inicio">
+        <img src="data:image/png;base64,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" alt="Digital Home" width="108" height="120" />
+        <b>Digital Home<small>Imprenta · Diseño · Madrid</small></b>
       </a>
-      <a href="https://www.instagram.com/digita_hm?igsh=MTZiaHBtNG93ZW96OA==" target="_blank" rel="noopener noreferrer" class="btn-ig"
-         aria-label="Seguirnos en Instagram (abre en nueva ventana)">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="white" aria-hidden="true" focusable="false"><path d="M7.75 2h8.5C19.55 2 22 4.45 22 7.75v8.5C22 19.55 19.55 22 16.25 22h-8.5C4.45 22 2 19.55 2 16.25v-8.5C2 4.45 4.45 2 7.75 2zm0 1.5C5.4 3.5 3.5 5.4 3.5 7.75v8.5C3.5 18.6 5.4 20.5 7.75 20.5h8.5c2.35 0 4.25-1.9 4.25-4.25v-8.5C20.5 5.4 18.6 3.5 16.25 3.5h-8.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 1.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7zm5.25-.88a1.12 1.12 0 110 2.24 1.12 1.12 0 010-2.24z"/></svg>
-        <span>Instagram</span>
-      </a>
-      <button class="btn-cart" id="btnCart" onclick="toggleCart()"
-              aria-label="Abrir carrito de pedido" aria-haspopup="true" aria-expanded="false" aria-controls="cartSidebar">
-        <span aria-hidden="true">🛒</span>
-        <span class="cart-badge" id="cartBadge" aria-live="polite" aria-atomic="true">0</span>
-      </button>
-    </div>
-  </nav>
-</header>
-
-<!-- ── MAIN: contenido principal de la página (landmark ARIA) ── -->
-<main id="contenido-principal" role="main">
-
-<!-- ══ HERO ══ Comparador antes/después de diseño profesional -->
-<section id="hero" aria-label="Comparador de diseño profesional vs sin diseño"
-         role="img" aria-roledescription="controlador deslizante de comparación">
-  <!-- LEFT: Con diseño (azul) — ancho controlado por JS -->
-  <div id="heroLeft" aria-hidden="true">
-    <div id="heroLeftBg"></div>
-    <div id="heroLeftContent">
-      <div class="hero-badge-d">✨ Con Digital Home</div>
-      <h1 class="hero-title-d">TU IMAGEN<br>NOS IMPORTA</h1>
-      <p class="hero-sub-d">Diseño profesional + impresión de calidad<br>+ entrega gratis en toda Madrid</p>
-      <div class="hero-ctas">
-        <a href="#servicios" class="btn-primary" aria-label="Pedir presupuesto de nuestros servicios de imprenta">
-          <span aria-hidden="true">📦</span> Consultar presupuesto
-        </a>
-        <a href="https://wa.me/674913178?text=Hola!%20Quiero%20pedir%20presupuesto" target="_blank"
-           rel="noopener noreferrer" class="btn-outline"
-           aria-label="Pedir presupuesto por WhatsApp (abre en nueva ventana)">
-          <span aria-hidden="true">💬</span> Hablar con un asesor
-        </a>
+      <nav>
+        <ul class="nav-links" id="menu">
+          <li><a class="navlink" href="#servicios"><span>Servicios</span><span aria-hidden="true">Servicios</span></a></li>
+          <li><a class="navlink" href="#como"><span>Cómo funciona</span><span aria-hidden="true">Cómo funciona</span></a></li>
+          <li><a class="navlink" href="#contacto"><span>Contacto</span><span aria-hidden="true">Contacto</span></a></li>
+          <li class="menu-only"><a class="menu-btn menu-btn--vortice" href="https://stanvanger.github.io/VorticeDev/" target="_blank" rel="noopener">VorticeDev</a></li>
+          <li class="menu-only"><a class="menu-btn menu-btn--primary" href="#contacto">Pedir presupuesto</a></li>
+        </ul>
+      </nav>
+      <div class="nav-right">
+        <a class="btn btn--vortice" href="https://stanvanger.github.io/VorticeDev/" target="_blank" rel="noopener" aria-label="VorticeDev — desarrollo web">VorticeDev</a>
+        <a class="btn btn--primary" href="#contacto">Pedir presupuesto</a>
+        <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
       </div>
     </div>
-  </div>
+  </header>
 
-  <!-- RIGHT: Sin diseño (gris) — ancho controlado por JS -->
-  <div id="heroRight" aria-hidden="true">
-    <div id="heroRightBg"></div>
-    <div id="heroRightContent">
-      <div class="hero-badge-p">❌ Sin diseño profesional</div>
-      <p class="hero-title-p">empresa s.l.</p>
-      <p class="hero-sub-p">Impresión casera. Sin calidad.<br>Sin imagen de marca.</p>
-    </div>
-  </div>
-
-  <!-- Tarjetas de ejemplo (elemento decorativo) -->
-  <div class="hero-card-wrap" aria-hidden="true" role="presentation">
-    <div class="hero-card-stage">
-      <!-- Tarjeta gris (capa inferior — siempre visible) -->
-      <div class="hcard-gray">
-        <div class="hcg-l">
-          <div class="hcg-logo">DH</div>
-          <div><div class="hcg-name">RESTAURANTE<br>EL RINCÓN</div><div class="hcg-cat">Cocina tradicional madrileña</div></div>
-          <div class="hcg-contact"><span>674 913 178</span><span>Madrid Centro</span></div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="reveal">
+        <span class="eyebrow">Imprenta + diseño · Madrid</span>
+        <h1>Imprenta en Madrid para llevar tu negocio al <span class="hl">siguiente nivel</span></h1>
+        <p>Desde pequeños negocios hasta grandes marcas — llevamos tu imagen profesional a tu puerta, gratis en todo Madrid. Tú nos envías tu archivo, lo revisamos y te lo dejamos listo.</p>
+        <div class="hero-ctas">
+          <a class="btn btn--primary" href="#contacto">Pedir presupuesto</a>
+          <a class="btn btn--ghost" href="#servicios">Ver lo que hacemos</a>
         </div>
-        <div class="hcg-accent"></div>
-        <div class="hcg-r">
-          <div class="hcg-rtitle">RESTAURANTE EL RINCON S.L.</div>
-          <div class="hcg-rsub">Cocina tradicional<br>Juan García - Gerente</div>
-          <div class="hcg-rcontact">Tel: 674913178 · Madrid</div>
+        <div class="hero-trust">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Entrega gratis en Madrid</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Revisión de archivos</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Respuesta en minutos</span>
         </div>
       </div>
-      <!-- Tarjeta color (capa superior — recorta a la izquierda del slider) -->
-      <div class="hcard-color" id="hcardColor">
-        <div class="hcc-l">
-          <div class="hcc-logo">DH</div>
-          <div><div class="hcc-name">RESTAURANTE<br>EL RINCÓN</div><div class="hcc-cat">Cocina tradicional madrileña</div></div>
-          <div class="hcc-contact"><span>📞 674 913 178</span><span>📍 Madrid Centro</span></div>
+      <div class="hero-img reveal" data-d="1">
+        <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Tu mejor foto aquí (imagenes/hero.jpg)</span></div>
+        <img src="imagenes/hero.jpg" alt="Trabajos de imprenta de Digital Home" />
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE FINO -->
+  <div class="strip" aria-hidden="true">
+    <div class="marquee">
+      <span>Digital</span><span>CMYK</span><span>Pantone</span><span>Gran formato</span><span>Imprenta</span><span>Offset</span><span>Flyers</span><span>Tarjetas</span><span>Lonas</span><span>Vinilo</span><span>Acabados</span><span>Couché</span><span>Digital</span><span>CMYK</span><span>Pantone</span><span>Gran formato</span><span>Imprenta</span><span>Offset</span><span>Flyers</span><span>Tarjetas</span><span>Lonas</span><span>Vinilo</span><span>Acabados</span><span>Couché</span>
+      <span>Digital</span><span>CMYK</span><span>Pantone</span><span>Gran formato</span><span>Imprenta</span><span>Offset</span><span>Flyers</span><span>Tarjetas</span><span>Lonas</span><span>Vinilo</span><span>Acabados</span><span>Couché</span><span>Digital</span><span>CMYK</span><span>Pantone</span><span>Gran formato</span><span>Imprenta</span><span>Offset</span><span>Flyers</span><span>Tarjetas</span><span>Lonas</span><span>Vinilo</span><span>Acabados</span><span>Couché</span>
+    </div>
+  </div>
+
+  <!-- CONFIANZA -->
+  <section class="trust">
+    <div class="wrap trust-grid">
+      <div class="trust-item reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><div><b>Entrega gratis</b><p>En todo Madrid, a la puerta de tu negocio.</p></div></div>
+      <div class="trust-item reveal" data-d="1"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div><b>Respuesta rápida</b><p>Te contestamos por WhatsApp en minutos.</p></div></div>
+      <div class="trust-item reveal" data-d="2"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><div><b>Revisión de archivos</b><p>Comprobamos tu archivo antes de imprimir.</p></div></div>
+      <div class="trust-item reveal" data-d="3"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div><div><b>Trato personal</b><p>Una persona te atiende de principio a fin.</p></div></div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="section" id="servicios">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow">Lo que imprimimos</span>
+        <h2>Todo lo que tu negocio necesita</h2>
+        <p>Pulsa cualquier servicio para ver sus características y pedirlo. Lo concretamos en un momento por WhatsApp.</p>
+      </div>
+      <div class="grid" id="grid">
+        <button class="card reveal" data-serv="Cartas y menús">
+          <div class="card-img"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><img src="imagenes/servicios/cartas.jpg" alt="Cartas y menús" loading="lazy" /></div>
+          <div class="card-body"><h3>Cartas y menús</h3><p>Cartas de restaurante, menús del día y displays de mesa.</p><span class="card-go">Ver características <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </button>
+        <button class="card reveal" data-d="1" data-serv="Flyers y folletos">
+          <div class="card-img"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><img src="imagenes/servicios/flyers.jpg" alt="Flyers y folletos" loading="lazy" /></div>
+          <div class="card-body"><h3>Flyers y folletos</h3><p>Flyers, dípticos y trípticos para promos y aperturas.</p><span class="card-go">Ver características <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </button>
+        <button class="card reveal" data-d="2" data-serv="Tarjetas de visita">
+          <div class="card-img"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><img src="imagenes/servicios/tarjetas.jpg" alt="Tarjetas de visita" loading="lazy" /></div>
+          <div class="card-body"><h3>Tarjetas de visita</h3><p>Acabados mate, brillo o laminado. Tu primera impresión.</p><span class="card-go">Ver características <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </button>
+        <button class="card reveal" data-d="3" data-serv="Lonas y roll-ups">
+          <div class="card-img"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><img src="imagenes/servicios/lonas.jpg" alt="Lonas y roll-ups" loading="lazy" /></div>
+          <div class="card-body"><h3>Lonas y roll-ups</h3><p>Gran formato para escaparates, ferias y eventos.</p><span class="card-go">Ver características <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </button>
+        <button class="card reveal" data-serv="Vinilos y rotulación">
+          <div class="card-img"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><img src="imagenes/servicios/vinilos.jpg" alt="Vinilos" loading="lazy" /></div>
+          <div class="card-body"><h3>Vinilos y rotulación</h3><p>Para escaparate, suelo o vehículo. Tu marca por todas partes.</p><span class="card-go">Ver características <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </button>
+        <button class="card reveal" data-d="1" data-serv="Textil y uniformes">
+          <div class="card-img"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><img src="imagenes/servicios/textil.jpg" alt="Textil y uniformes" loading="lazy" /></div>
+          <div class="card-body"><h3>Textil y uniformes</h3><p>Camisetas, delantales y uniformes para tu equipo.</p><span class="card-go">Ver características <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </button>
+        <button class="card reveal" data-d="2" data-serv="Cartelería">
+          <div class="card-img"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><img src="imagenes/servicios/carteleria.jpg" alt="Cartelería" loading="lazy" /></div>
+          <div class="card-body"><h3>Cartelería</h3><p>Carteles, displays rígidos y señalética a medida.</p><span class="card-go">Ver características <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </button>
+        <button class="card reveal" data-d="3" data-serv="Pegatinas y etiquetas">
+          <div class="card-img"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><img src="imagenes/servicios/pegatinas.jpg" alt="Pegatinas y etiquetas" loading="lazy" /></div>
+          <div class="card-body"><h3>Pegatinas y etiquetas</h3><p>Troquel a medida y acabados especiales. En hoja o bobina.</p><span class="card-go">Ver características <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CÓMO FUNCIONA -->
+  <section class="section section--soft" id="como">
+    <div class="wrap">
+      <div class="head head--center reveal">
+        <span class="eyebrow">Cómo funciona</span>
+        <h2>Del primer mensaje a tu mostrador</h2>
+        <p>Sin complicaciones. Tú nos cuentas, nosotros nos encargamos del resto.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><div class="n">1</div><h3>Cuéntanos</h3><p>Nos escribes por WhatsApp o rellenas el formulario y nos envías tu archivo.</p></div>
+        <div class="step reveal" data-d="1"><div class="n">2</div><h3>Revisamos</h3><p>Comprobamos tu archivo (resolución, color, medidas y cortes) para que salga perfecto.</p></div>
+        <div class="step reveal" data-d="2"><div class="n">3</div><h3>Recíbelo</h3><p>Imprimimos con los mejores acabados y te lo llevamos gratis en Madrid.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVISIÓN TECH · VORTICEDEV (upsell: web + automatización, identidad propia) -->
+  <style>
+    .tech{ background:var(--negro); color:#fff; overflow:hidden; position:relative; }
+    .tech::before{ content:""; position:absolute; inset:0; background:radial-gradient(60% 80% at 18% 0%, rgba(236,30,121,.20), transparent 60%), radial-gradient(55% 75% at 90% 100%, rgba(139,61,255,.22), transparent 60%); pointer-events:none; }
+    .tech .wrap{ position:relative; }
+    .tech-head{ max-width:640px; margin-bottom:44px; }
+    .tech .eyebrow{ background:linear-gradient(100deg,#FF4FA3,#A06BFF); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .tech h2{ font-size:clamp(2rem,4.3vw,3.1rem); margin-bottom:14px; }
+    .tech-head p{ color:#b9b9c8; font-size:clamp(1rem,1.3vw,1.12rem); }
+    .tech-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-bottom:38px; }
+    .tech-card{ background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.10); border-radius:18px; padding:26px 24px; transition:border-color .25s, transform .25s, background .25s; }
+    .tech-card:hover{ transform:translateY(-5px); border-color:rgba(236,30,121,.55); background:rgba(255,255,255,.06); }
+    .tech-card .tic{ width:46px; height:46px; border-radius:13px; background:linear-gradient(120deg,#EC1E79,#8B3DFF); display:flex; align-items:center; justify-content:center; margin-bottom:16px; }
+    .tech-card .tic svg{ width:23px; height:23px; color:#fff; }
+    .tech-card h3{ font-size:1.18rem; font-weight:700; margin-bottom:8px; }
+    .tech-card p{ color:#aeaebd; font-size:.92rem; line-height:1.55; }
+    .tech-cta{ display:flex; flex-wrap:wrap; align-items:center; gap:16px; }
+    .tech-note{ color:#8a8a9c; font-size:.88rem; max-width:360px; }
+    .tech-note b{ color:#d7d7e2; font-weight:700; }
+    @media (max-width:980px){ .tech-grid{ grid-template-columns:1fr; } }
+  </style>
+  <section class="section tech" id="tech">
+    <div class="wrap">
+      <div class="tech-head reveal">
+        <span class="eyebrow">División tech · VorticeDev</span>
+        <h2>Tu negocio también necesita estar online</h2>
+        <p>Más allá del papel, montamos tu presencia digital: la web que te encuentra en Google y automatizaciones que te ahorran horas. Lo desarrollamos con <b style="color:#fff;">VorticeDev</b>, nuestra división tecnológica.</p>
+      </div>
+      <div class="tech-grid">
+        <div class="tech-card reveal">
+          <div class="tic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <h3>Páginas web</h3>
+          <p>Webs rápidas, a medida y pensadas para vender, optimizadas para que te encuentren en Google y en los buscadores con IA.</p>
         </div>
-        <div class="hcc-accent"></div>
-        <div class="hcc-r">
-          <div class="hcc-rtitle">RESTAURANTE EL RINCON S.L.</div>
-          <div class="hcc-rsub">Cocina tradicional<br>Juan García - Gerente</div>
-          <div class="hcc-rcontact">Tel: 674913178 · Madrid</div>
+        <div class="tech-card reveal" data-d="1">
+          <div class="tic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <h3>Automatización con IA</h3>
+          <p>Agentes de WhatsApp que responden, cualifican clientes y toman pedidos solos, 24/7. Dejas de perder mensajes mientras trabajas.</p>
         </div>
-      </div>
-      <span class="card-lbl card-lbl-d">CON DISEÑO</span>
-      <span class="card-lbl card-lbl-p">SIN DISEÑO</span>
-    </div>
-  </div>
-
-  <!-- Slider de comparación — widget ARIA slider (WCAG 2.1 Pattern) -->
-  <div id="splitLine" role="presentation">
-    <div id="splitHandle"
-         role="slider"
-         aria-label="Deslizador de comparación de diseño"
-         aria-valuemin="8"
-         aria-valuemax="92"
-         aria-valuenow="50"
-         aria-valuetext="50% — Comparación al 50%"
-         tabindex="0">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#1B50E8" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" focusable="false">
-        <path d="M8 5l-7 7 7 7M16 5l7 7-7 7"/>
-      </svg>
-    </div>
-  </div>
-  <p class="drag-hint" aria-hidden="true">← Arrastra para comparar →</p>
-</section>
-
-<!-- Barra de confianza — complementary landmark -->
-<aside class="trust-bar" aria-label="Ventajas de Digital Home">
-  <ul role="list" style="display:contents">
-    <li class="trust-item"><span aria-hidden="true">🚚</span> Entrega gratis en Madrid</li>
-    <li class="trust-item"><span aria-hidden="true">🎨</span> Diseño a medida</li>
-    <li class="trust-item"><span aria-hidden="true">⚡</span> Entrega en 24h–7 días</li>
-    <li class="trust-item"><span aria-hidden="true">⭐</span> +5 años en Madrid</li>
-    <li class="trust-item"><span aria-hidden="true">💬</span> Respuesta en minutos</li>
-  </ul>
-</aside>
-
-<!-- Catálogo de servicios de imprenta en Madrid -->
-<section id="servicios" aria-labelledby="servicios-titulo" style="text-align:center">
-  <span class="section-tag" aria-hidden="true">Catálogo completo</span>
-  <h2 class="section-title" id="servicios-titulo">Nuestros Servicios de Imprenta en Madrid</h2>
-  <p class="section-sub">Selecciona los productos que te interesan y solicita un presupuesto personalizado sin compromiso. Entrega gratuita en Madrid.</p>
-  <div class="services-grid" id="sGrid" role="list" aria-label="Lista de servicios disponibles"></div>
-</section>
-
-<!-- Extras y servicios de diseño gráfico -->
-<section id="diferencial" aria-labelledby="diferencial-titulo">
-  <span class="section-tag" aria-hidden="true"></span>
-  <h2 class="section-title" id="diferencial-titulo">Extras &amp; Diseño Gráfico</h2>
-  <p class="section-sub" style="margin-bottom:24px">Activa lo que necesitas y se añade automáticamente a tu pedido.</p>
-
-  <!-- Aviso informativo — role="note" para lectores de pantalla -->
-  <div class="extras-alert" role="note" aria-label="Información sobre el servicio de diseño">
-    <div class="extras-alert-icon" aria-hidden="true">💡</div>
-    <div class="extras-alert-text">
-      <strong>El diseño NO está incluido por defecto.</strong> Si necesitas que creemos tu diseño desde cero o que retoquemos el tuyo, activa la opción correspondiente. Si ya tienes tu diseño listo para imprimir, no necesitas añadir nada.
-    </div>
-  </div>
-
-  <div class="extras-grid" id="extrasGrid" role="list" aria-label="Opciones de extras y diseño"></div>
-
-  <!-- Garantías y ventajas del servicio -->
-  <div class="trust-strip" role="list" aria-label="Ventajas y garantías de Digital Home">
-    <article class="trust-strip-item" role="listitem">
-      <div class="tsi-icon" aria-hidden="true">🚚</div>
-      <div>
-        <h3 class="tsi-title">Reparto gratis en Madrid</h3>
-        <p class="tsi-text">Llevamos tu pedido directamente a tu negocio, sin coste. Solo en Madrid.</p>
-      </div>
-    </article>
-    <article class="trust-strip-item" role="listitem">
-      <div class="tsi-icon" aria-hidden="true">🤝</div>
-      <div>
-        <h3 class="tsi-title">Atención personalizada</h3>
-        <p class="tsi-text">Hablas con quien imprime. Presupuesto en minutos por WhatsApp.</p>
-      </div>
-    </article>
-    <article class="trust-strip-item" role="listitem">
-      <div class="tsi-icon" aria-hidden="true">💎</div>
-      <div>
-        <h3 class="tsi-title">Calidad garantizada</h3>
-        <p class="tsi-text">Si no te convence, lo repetimos. Tu satisfacción es nuestra prioridad.</p>
-      </div>
-    </article>
-    <article class="trust-strip-item" role="listitem">
-      <div class="tsi-icon" aria-hidden="true">🌐</div>
-      <div>
-        <h3 class="tsi-title">Web + Imprenta</h3>
-        <p class="tsi-text">Tu presencia digital y tu material impreso, en un solo sitio.</p>
-      </div>
-    </article>
-  </div>
-</section>
-
-<!-- CTA — llamada a la acción final -->
-<section id="cta" aria-labelledby="cta-titulo">
-  <span class="section-tag" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.2)" aria-hidden="true"></span>
-  <h2 class="section-title" id="cta-titulo" style="color:#fff;margin-bottom:10px">Lleva tu negocio<br>al siguiente nivel</h2>
-  <p class="section-sub" style="color:rgba(255,255,255,.8);margin:0 auto 32px">Desde pequeños negocios hasta grandes empresas — llevamos tu imagen profesional a tu puerta, gratis.</p>
-  <div class="cta-btns">
-    <a href="https://wa.me/674913178?text=Hola!%20Quiero%20presupuesto%20para%20mi%20negocio" target="_blank"
-       rel="noopener noreferrer" class="btn-primary"
-       aria-label="Pedir presupuesto personalizado por WhatsApp (abre en nueva ventana)">
-      <span aria-hidden="true">💬</span> Presupuesto por WhatsApp
-    </a>
-    <button class="btn-outline" onclick="toggleCart()" aria-label="Ver mi pedido actual" aria-controls="cartSidebar">
-      <span aria-hidden="true">🛒</span> Ver mi pedido
-    </button>
-  </div>
-</section>
-
-</main><!-- fin #contenido-principal -->
-
-<!-- Footer principal — contentinfo landmark -->
-<footer role="contentinfo" aria-label="Información de contacto y enlaces de Digital Home">
-  <div style="background:transparent">
-    <p class="footer-brand">DIGITAL HOME™</p>
-    <p style="font-size:12px;margin-top:4px">Imprenta &amp; Desarrollo Web · Madrid</p>
-    <p style="font-size:11px;color:rgba(255,255,255,.35);margin-top:8px">© 2025 digitalhome.website</p>
-  </div>
-  <div style="margin-top:20px;background:transparent">
-    <ul class="footer-links" role="list" style="background:transparent">
-      <li><a href="#servicios">Servicios de Imprenta</a></li>
-      <li><a href="#diferencial">Extras y Diseño</a></li>
-      <li><a href="https://wa.me/674913178" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
-    </ul>
-    <p style="font-size:11px;color:rgba(255,255,255,.35);margin-top:12px">
-      📍 Madrid · Entrega gratuita en toda la ciudad
-    </p>
-  </div>
-</footer>
-
-
-<!-- Barra legal inferior -->
-<div class="footer-legal" role="contentinfo" aria-label="Avisos legales y redes sociales">
-  <a href="https://www.instagram.com/digita_hm?igsh=MTZiaHBtNG93ZW96OA==" target="_blank" rel="noopener noreferrer"
-     aria-label="Instagram de Digital Home (abre en nueva ventana)">Instagram</a>
-  <a href="politica-privacidad.html">Política de privacidad</a>
-  <a href="envios.html">Envíos</a>
-  <a href="devoluciones.html">Devoluciones</a>
-</div>
-
-<!-- Overlay de fondo para modales — accesible con teclado -->
-<div id="overlay" onclick="closeAll()" aria-hidden="true" tabindex="-1"></div>
-
-<!-- Carrito de pedido — aside panel (complementary + dialog) -->
-<aside id="cartSidebar" role="dialog" aria-modal="true" aria-labelledby="cartTitle" aria-hidden="true">
-  <div class="cart-head">
-    <h2 id="cartTitle" style="font-family:var(--fd);font-size:22px;font-weight:800;color:var(--dark)">
-      <span aria-hidden="true">🛒</span> Mi pedido
-    </h2>
-    <button class="cart-close" onclick="toggleCart()" aria-label="Cerrar carrito de pedido">✕</button>
-  </div>
-  <div class="cart-scroll" id="cartScroll" aria-live="polite" aria-atomic="false">
-    <div class="cart-empty" role="status">
-      <span class="cart-empty-icon" aria-hidden="true">🛍️</span>
-      <p style="font-weight:600;color:var(--dark);margin-bottom:6px">Tu pedido está vacío</p>
-      <p style="font-size:13px">Añade productos del catálogo</p>
-    </div>
-  </div>
-  <div class="cart-foot" id="cartFoot" style="display:none">
-    <div class="cart-total-row">
-      <span>Estado del pedido</span>
-      <strong id="cartTotal" aria-live="polite" aria-atomic="true">Pendiente presupuesto</strong>
-    </div>
-    <button class="btn-checkout" onclick="openCheckout()" aria-label="Pedir presupuesto por WhatsApp">
-      <span aria-hidden="true">📲</span> Pedir presupuesto por WhatsApp
-    </button>
-  </div>
-</aside>
-
-<!-- Modal de checkout — dialog ARIA (WCAG 2.1 Pattern: Modal Dialog) -->
-<div id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle" aria-hidden="true">
-  <div class="modal-box">
-    <div class="modal-head">
-      <h2 id="checkoutTitle" style="font-family:var(--fd);font-size:26px;font-weight:900">
-        <span aria-hidden="true">📦</span> Datos de entrega
-      </h2>
-      <p style="font-size:13px;opacity:.85;margin-top:3px">Recibirás tu pedido gratis en Madrid <span aria-hidden="true">🚚</span></p>
-    </div>
-    <div class="modal-body">
-      <div class="form-2col">
-        <div class="fg">
-          <label for="fName">Nombre completo <span class="req" aria-label="campo obligatorio">*</span></label>
-          <input type="text" id="fName" name="nombre" placeholder="Nombre y apellido"
-                 autocomplete="name" aria-required="true" aria-describedby="fName-msg">
-          <span class="f-msg" id="fName-msg" role="alert"></span>
-        </div>
-        <div class="fg">
-          <label for="fPhone">Teléfono <span class="req" aria-label="campo obligatorio">*</span></label>
-          <input type="tel" id="fPhone" name="telefono" placeholder="6xx xxx xxx"
-                 autocomplete="tel" maxlength="12" aria-required="true" aria-describedby="fPhone-msg">
-          <span class="f-msg" id="fPhone-msg" role="alert"></span>
+        <div class="tech-card reveal" data-d="2">
+          <div class="tic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="13" r="2.5"/><circle cx="8.5" cy="16" r="2.5"/><path d="M3 21c0-3 2-5 5-5"/></svg></div>
+          <h3>Marca y branding</h3>
+          <p>Logo, identidad visual y todo el material coordinado entre tu web y tu imprenta. Una marca coherente de la pantalla al papel.</p>
         </div>
       </div>
-      <div class="fg">
-        <label for="fAddress">Dirección de entrega en Madrid <span class="req" aria-label="campo obligatorio">*</span></label>
-        <input type="text" id="fAddress" name="direccion" placeholder="Ej: Calle Gran Vía 45, 2ºA, Madrid"
-               autocomplete="street-address" aria-required="true" aria-describedby="fAddress-msg">
-        <span class="f-msg" id="fAddress-msg" role="alert"></span>
-      </div>
-      <div class="fg">
-        <label for="fEmail">Email <span style="font-size:11px;color:var(--gray);font-weight:400">(opcional)</span></label>
-        <input type="email" id="fEmail" name="email" placeholder="tu@email.com"
-               autocomplete="email" aria-required="false" aria-describedby="fEmail-msg">
-        <span class="f-msg" id="fEmail-msg" role="alert"></span>
-      </div>
-      <div class="fg">
-        <label for="fNotes">Notas del pedido <span style="font-size:11px;color:var(--gray);font-weight:400">(colores, diseño, urgencia...)</span></label>
-        <textarea id="fNotes" name="notas" placeholder="Ej: Logo en azul y blanco, necesito para el viernes..." aria-required="false"></textarea>
-      </div>
-      <div class="fg">
-        <label for="fFile">Adjuntar archivo de diseño <span style="font-size:11px;color:var(--gray);font-weight:400">(PDF o imagen)</span></label>
-        <div class="upload-box" id="uploadBox" aria-label="Área de carga de archivos. Haz clic o arrastra">
-          <input type="file" id="fFile" name="archivo" accept=".pdf,.png,.jpg,.jpeg,.webp"
-                 aria-label="Seleccionar archivo de diseño (PDF, PNG o JPG, máximo 10 MB)">
-          <div style="font-size:24px;margin-bottom:4px" aria-hidden="true">📎</div>
-          <div style="font-size:13px;color:var(--gray);font-weight:500">Haz clic o arrastra tu archivo</div>
-          <div style="font-size:11px;color:#aaa;margin-top:2px">PDF, PNG, JPG · Máx. 10 MB</div>
-        </div>
-        <div class="up-preview" id="upPreview" role="status" aria-live="polite">
-          <span id="upName" class="up-name"></span>
-          <button class="btn-rm-f" onclick="removeFile()" aria-label="Eliminar archivo adjunto">✕</button>
-        </div>
-      </div>
-      <div class="wa-info" role="note" aria-label="Información sobre el archivo adjunto">
-        <span aria-hidden="true">💡</span>
-        <span>Si adjuntas un archivo, WhatsApp se abrirá y deberás enviarlo manualmente pulsando el clip en el chat.</span>
+      <div class="tech-cta">
+        <a class="btn btn--vortice" href="https://stanvanger.github.io/VorticeDev/" target="_blank" rel="noopener">Ver VorticeDev</a>
+        <a class="btn btn--light" href="https://wa.me/34674913178?text=Hola%20Digital%20Home!%20Me%20interesa%20una%20web%20o%20automatizaci%C3%B3n%20con%20VorticeDev." target="_blank" rel="noopener">Consultar por WhatsApp</a>
+        <span class="tech-note"><b>¿Ya eres cliente de imprenta?</b> Te montamos la web o la automatización con condiciones especiales.</span>
       </div>
     </div>
-    <div class="modal-actions">
-      <button class="btn-back" onclick="closeCheckout()" aria-label="Volver al carrito de pedido">← Volver</button>
-      <button class="btn-send" onclick="sendOrder()" aria-label="Confirmar y enviar pedido por WhatsApp">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="white" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.121 1.535 5.849L.057 23.945l6.261-1.644A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-1.97 0-3.81-.538-5.385-1.473l-.386-.229-4.001 1.049 1.069-3.902-.251-.4A9.777 9.777 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
-        Enviar pedido
-      </button>
+  </section>
+
+  <!-- RESEÑAS / CLIENTES (carrusel automático) -->
+  <style>
+    .reviews{ overflow:hidden; }
+    .rev-head{ text-align:center; max-width:640px; margin:0 auto 44px; }
+    .rev-track-wrap{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); }
+    .rev-track{ display:flex; gap:20px; width:max-content; animation:rev-scroll 48s linear infinite; }
+    .rev-track:hover{ animation-play-state:paused; }
+    @keyframes rev-scroll{ to{ transform:translateX(-50%); } }
+    .rev-card{ flex:0 0 340px; width:340px; background:#fff; border:1px solid var(--linea); border-radius:18px; padding:26px; box-shadow:0 18px 44px -36px rgba(20,20,40,.5); }
+    .rev-stars{ display:flex; gap:3px; color:#FFB400; margin-bottom:13px; }
+    .rev-stars svg{ width:18px; height:18px; }
+    .rev-text{ font-size:.98rem; color:#33313f; line-height:1.55; margin-bottom:18px; }
+    .rev-who{ display:flex; align-items:center; gap:12px; }
+    .rev-av{ width:44px; height:44px; border-radius:50%; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.02rem; flex-shrink:0; }
+    .rev-who b{ display:block; font-size:.95rem; }
+    .rev-who span{ font-size:.82rem; color:var(--gris); }
+    @media (max-width:620px){ .rev-card{ flex-basis:280px; width:280px; } }
+    @media (prefers-reduced-motion:reduce){ .rev-track{ animation:none; transform:none; } .rev-track-wrap{ overflow-x:auto; } }
+  </style>
+  <section class="section reviews" id="resenas">
+    <div class="wrap">
+      <div class="rev-head reveal">
+        <span class="eyebrow">Reseñas reales en Google</span>
+        <h2>Negocios de Madrid que ya confían en nosotros</h2>
+        <p style="color:var(--gris);">Bares, restaurantes, marcas y comercios que ya han impreso con nosotros. Esto es lo que dicen en Google.</p>
+      </div>
     </div>
-  </div>
-</div>
-
-<script>
-/* ============================================================
-   HERO SLIDER — overflow:hidden + width technique
-   LEFT and RIGHT divs each occupy their half via width.
-   Content inside is 100vw wide → always screen-centered,
-   clipped clean by parent overflow:hidden. No more bleed.
-   ============================================================ */
-(function() {
-  var heroLeft    = document.getElementById('heroLeft');
-  var heroRight   = document.getElementById('heroRight');
-  var splitLine   = document.getElementById('splitLine');
-  var splitHandle = document.getElementById('splitHandle');
-  var hcardColor  = document.getElementById('hcardColor');
-  var hero        = document.getElementById('hero');
-  var pos = 50, dragging = false, animOn = true, dir = -1, raf = null;
-
-  function applyPos(p) {
-    pos = Math.max(8, Math.min(92, p));
-    heroLeft.style.width  = pos + '%';
-    heroRight.style.width = (100 - pos) + '%';
-    splitLine.style.left  = pos + '%';
-    hcardColor.style.clipPath = 'polygon(0% 0%,' + pos + '% 0%,' + pos + '% 100%,0% 100%)';
-    var rnd = Math.round(pos);
-    splitHandle.setAttribute('aria-valuenow', rnd);
-    splitHandle.setAttribute('aria-valuetext', rnd + '% — ' + (rnd < 50 ? 'mostrando más diseño profesional' : rnd > 50 ? 'mostrando más ejemplo sin diseño' : 'comparación al 50%'));
-  }
-
-  function getX(e) {
-    var rect = hero.getBoundingClientRect();
-    var cx = e.touches ? e.touches[0].clientX : e.clientX;
-    return ((cx - rect.left) / rect.width) * 100;
-  }
-
-  /* Drag events */
-  splitHandle.addEventListener('mousedown', function(e) {
-    animOn = false; if(raf){cancelAnimationFrame(raf);raf=null;}
-    dragging = true; e.preventDefault();
-  });
-  splitHandle.addEventListener('touchstart', function() {
-    animOn = false; if(raf){cancelAnimationFrame(raf);raf=null;}
-    dragging = true;
-  }, {passive:true});
-  document.addEventListener('mousemove', function(e) { if(dragging) applyPos(getX(e)); });
-  document.addEventListener('touchmove', function(e) { if(dragging) applyPos(getX(e)); }, {passive:true});
-  document.addEventListener('mouseup',  function() { dragging = false; });
-  document.addEventListener('touchend', function() { dragging = false; });
-  hero.addEventListener('click', function(e) {
-    if(!dragging){ animOn=false; if(raf){cancelAnimationFrame(raf);raf=null;} applyPos(getX(e)); }
-  });
-
-  /* Slow auto-animation — 0.08 per frame ≈ very readable */
-  var lastT = 0;
-  function step(ts) {
-    if(!animOn) return;
-    if(ts - lastT > 13) {
-      pos += dir * 0.08;
-      if(pos <= 28) dir = 1;
-      if(pos >= 72) dir = -1;
-      applyPos(pos);
-      lastT = ts;
-    }
-    raf = requestAnimationFrame(step);
-  }
-
-  applyPos(50);
-  setTimeout(function() {
-    animOn = true;
-    raf = requestAnimationFrame(step);
-  }, 600);
-})();
-
-/* ============================================================
-   CART SYSTEM
-   ============================================================ */
-var cart = [];
-var selectedFile = null;
-
-function addToCart(name, price) {
-  for(var i=0;i<cart.length;i++){if(cart[i].name===name){cart[i].qty++;renderCart();return;}}
-  cart.push({name:name,price:price,qty:1});
-  renderCart();
-}
-function removeItem(name) {
-  cart = cart.filter(function(i){return i.name!==name;}); renderCart();
-}
-function renderCart() {
-  var total=0,count=0;
-  for(var i=0;i<cart.length;i++){count+=cart[i].qty;}
-  var badge=document.getElementById('cartBadge');
-  badge.textContent=count;
-  count>0?badge.classList.add('show'):badge.classList.remove('show');
-  var scroll=document.getElementById('cartScroll');
-  var foot=document.getElementById('cartFoot');
-  if(cart.length===0){
-    scroll.innerHTML='<div class="cart-empty"><span class="cart-empty-icon">🛍️</span><p style="font-weight:600;color:var(--dark);margin-bottom:6px">Tu pedido está vacío</p><p style="font-size:13px">Añade productos del catálogo</p></div>';
-    foot.style.display='none';return;
-  }
-  foot.style.display='block';
-  var html='';
-  for(var j=0;j<cart.length;j++){
-    var it=cart[j],en=it.name.replace(/'/g,"\\'");
-    html+='<div class="cart-item"><div class="ci-info"><div class="ci-name">'+it.name+'</div></div>';
-    html+='<div class="ci-qty">';
-    html+='<button class="qty-btn" onclick="changeQty(\''+en+'\',-1)">−</button>';
-    html+='<input type="text" class="qty-n-input" value="'+it.qty+'" onchange="updateQtyManually(\''+en+'\', this.value)" style="width:50px;text-align:center;border:1px solid var(--border);border-radius:4px;font-weight:700;padding:2px;font-size:13px">';
-    html+='<button class="qty-btn" onclick="changeQty(\''+en+'\',1)">+</button>';
-    html+='<button class="btn-rm" onclick="removeItem(\''+en+'\')" style="margin-left:8px">✕</button>';
-    html+='</div></div>';
-  }
-  scroll.innerHTML=html;
-}
-
-function updateQtyManually(name, val) {
-  var num = parseInt(val);
-  if(isNaN(num) || num < 1) num = 1;
-  for(var i=0; i<cart.length; i++){
-    if(cart[i].name === name){
-      cart[i].qty = num;
-      break;
-    }
-  }
-  renderCart();
-}
-
-/* Helpers ARIA para modales — WCAG 4.1.3 */
-function setModalOpen(el, open) {
-  if (open) { el.classList.add('open'); el.setAttribute('aria-hidden','false'); }
-  else       { el.classList.remove('open'); el.setAttribute('aria-hidden','true'); }
-}
-function setDialogOpen(el, open) {
-  if (open) { el.classList.add('show'); el.setAttribute('aria-hidden','false'); }
-  else       { el.classList.remove('show'); el.setAttribute('aria-hidden','true'); }
-}
-function toggleCart() {
-  var sb=document.getElementById('cartSidebar'),ov=document.getElementById('overlay'),btn=document.getElementById('btnCart');
-  var opening = !sb.classList.contains('open');
-  setModalOpen(sb, opening);
-  if(opening){
-    ov.classList.add('show');
-    setDialogOpen(document.getElementById('checkoutModal'),false);
-    btn && btn.setAttribute('aria-expanded','true');
-  } else {
-    ov.classList.remove('show');
-    btn && btn.setAttribute('aria-expanded','false');
-  }
-}
-function closeAll(){
-  var sb=document.getElementById('cartSidebar'),cm=document.getElementById('checkoutModal'),ov=document.getElementById('overlay'),btn=document.getElementById('btnCart');
-  setModalOpen(sb,false); setDialogOpen(cm,false);
-  ov.classList.remove('show');
-  btn && btn.setAttribute('aria-expanded','false');
-}
-function openCheckout(){
-  if(cart.length===0)return;
-  var sb=document.getElementById('cartSidebar'),cm=document.getElementById('checkoutModal'),ov=document.getElementById('overlay'),btn=document.getElementById('btnCart');
-  setModalOpen(sb,false);
-  setDialogOpen(cm,true);
-  ov.classList.add('show');
-  btn && btn.setAttribute('aria-expanded','false');
-  /* Mover foco al título del modal para accesibilidad */
-  setTimeout(function(){var t=document.getElementById('checkoutTitle');if(t)t.focus();},100);
-}
-function closeCheckout(){
-  var sb=document.getElementById('cartSidebar'),cm=document.getElementById('checkoutModal'),btn=document.getElementById('btnCart');
-  setDialogOpen(cm,false);
-  setModalOpen(sb,true);
-  btn && btn.setAttribute('aria-expanded','true');
-}
-
-/* ============================================================
-   FORM VALIDATION
-   ============================================================ */
-function setField(id,state,msg){
-  var el=document.getElementById(id),m=document.getElementById(id+'-msg');
-  el.classList.remove('f-err','f-ok');
-  if(m){m.classList.remove('show-err','show-ok');m.textContent='';}
-  if(state==='error'){el.classList.add('f-err');if(m){m.textContent='⚠ '+msg;m.classList.add('show-err');}}
-  else if(state==='ok'){el.classList.add('f-ok');if(m){m.textContent='✓ Correcto';m.classList.add('show-ok');}}
-}
-function validateAll(){
-  var name=document.getElementById('fName').value.trim();
-  var rawPhone=document.getElementById('fPhone').value.replace(/[\s\-\.]/g,'');
-  var address=document.getElementById('fAddress').value.trim();
-  var email=document.getElementById('fEmail').value.trim();
-  var ok=true;
-  if(name.length<4||name.split(/\s+/).length<2){setField('fName','error','Escribe tu nombre y apellido');ok=false;}
-  else if(/\d/.test(name)){setField('fName','error','El nombre no puede tener números');ok=false;}
-  else setField('fName','ok');
-  var ph=rawPhone.replace(/^(\+34|0034)/,'');
-  if(!ph){setField('fPhone','error','El teléfono es obligatorio');ok=false;}
-  else if(!/^[6789]\d{8}$/.test(ph)){setField('fPhone','error','Teléfono inválido (9 dígitos, empieza por 6,7,8 o 9)');ok=false;}
-  else setField('fPhone','ok');
-  var stRe=/\b(calle|c\/|cl\.|avda|avenida|plaza|paseo|ronda|camino|via|vía|gran via|gran vía|travesia|travesía|glorieta|carretera)\b/i;
-  if(address.length<12){setField('fAddress','error','Dirección demasiado corta');ok=false;}
-  else if(!/\d/.test(address)){setField('fAddress','error','Incluye el número de portal');ok=false;}
-  else if(!stRe.test(address)){setField('fAddress','error','Indica el tipo de vía: Calle, Avenida, Plaza...');ok=false;}
-  else setField('fAddress','ok');
-  if(email&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){setField('fEmail','error','Email no válido');ok=false;}
-  else if(email)setField('fEmail','ok');
-  return ok;
-}
-['fName','fPhone','fAddress','fEmail'].forEach(function(id){
-  var el=document.getElementById(id);
-  if(el)el.addEventListener('input',function(){el.classList.remove('f-err','f-ok');var m=document.getElementById(id+'-msg');if(m)m.classList.remove('show-err','show-ok');});
-});
-function sendOrder(){
-  if(!validateAll()){document.querySelector('.modal-box').scrollTo({top:0,behavior:'smooth'});return;}
-  var name=document.getElementById('fName').value.trim();
-  var phone=document.getElementById('fPhone').value.trim();
-  var address=document.getElementById('fAddress').value.trim();
-  var email=document.getElementById('fEmail').value.trim();
-  var notes=document.getElementById('fNotes').value.trim();
-  var lines='';
-  for(var i=0;i<cart.length;i++){lines+='  • '+cart[i].name+' × '+cart[i].qty+'\n';}
-  var msg='🛒 *NUEVO PEDIDO – Digital Home*\n\n';
-  msg+='👤 *Cliente:* '+name+'\n';msg+='📞 *Teléfono:* '+phone+'\n';msg+='📍 *Dirección:* '+address+'\n';
-  if(email)msg+='📧 *Email:* '+email+'\n';
-  msg+='\n📦 *PRODUCTOS:*\n'+lines+'\n🚚 _Entrega gratuita en Madrid_';
-  if(notes)msg+='\n\n📝 *Notas:* '+notes;
-  if(selectedFile)msg+='\n\n📎 *Adjunta archivo de diseño en el chat*';
-  window.open('https://wa.me/674913178?text='+encodeURIComponent(msg),'_blank','noopener');
-  if(selectedFile)setTimeout(function(){alert('✅ Pedido enviado.\n\n📎 Adjunta el archivo en WhatsApp (clip 📎).');},800);
-  closeAll();cart=[];selectedFile=null;renderCart();
-  ['fName','fPhone','fAddress','fEmail','fNotes'].forEach(function(id){var el=document.getElementById(id);if(el){el.value='';el.classList.remove('f-err','f-ok');}});
-  document.getElementById('upPreview').classList.remove('show');
-  document.getElementById('uploadBox').style.borderColor='';
-}
-document.getElementById('fFile').addEventListener('change',function(){
-  var file=this.files[0];if(!file)return;
-  if(file.size>10*1024*1024){alert('El archivo supera 10 MB');this.value='';return;}
-  selectedFile=file;
-  document.getElementById('upName').textContent='📄 '+file.name+' ('+(file.size/1024/1024).toFixed(1)+' MB)';
-  document.getElementById('upPreview').classList.add('show');
-  document.getElementById('uploadBox').style.borderColor='var(--green)';
-});
-function removeFile(){selectedFile=null;document.getElementById('fFile').value='';document.getElementById('upPreview').classList.remove('show');document.getElementById('uploadBox').style.borderColor='';}
-
-/* ============================================================
-   EXTRAS WITH TOGGLE — add / remove from cart
-   ============================================================ */
-var EXTRAS = [
-  {
-    id:'diseno-cero', icon:'🎨',
-    title:'Diseño desde cero',
-    desc:'Nuestros diseñadores crean tu material visual completo: logo, composición, tipografía y paleta de colores. Recibirás prueba para aprobar antes de imprimir.',
-    tag:'OPCIONAL', tagType:'optional',
-    price:0, priceLabel:'A consultar',
-    note:'Ideal si no tienes diseño ni logo propio.'
-  },
-  {
-    id:'diseno-retoque', icon:'✏️',
-    title:'Retoque de diseño',
-    desc:'Tienes un logo o diseño base pero necesita adaptarse al formato de impresión, ajustar colores, resolución o composición. Lo hacemos nosotros.',
-    tag:'OPCIONAL', tagType:'optional',
-    price:0, priceLabel:'A consultar',
-    note:'Apto si ya tienes diseño pero necesita ajustes.'
-  },
-  {
-    id:'urgente', icon:'🚀',
-    title:'Entrega urgente',
-    desc:'Tu pedido pasa a primer lugar en la cola de producción. Garantizamos máxima prioridad de fabricación y entrega el mismo día o al día siguiente en Madrid.',
-    tag:'OPCIONAL', tagType:'optional',
-    price:0, priceLabel:'Consulta urgencia',
-    note:'Disponible para pedidos recibidos antes de las 12:00h.'
-  },
-  {
-    id:'prueba', icon:'🖨️',
-    title:'Prueba de impresión',
-    desc:'Te enviamos una muestra física de un único ejemplar antes de imprimir la tirada completa. Así puedes comprobar color, acabado y tamaño real.',
-    tag:'OPCIONAL', tagType:'optional',
-    price:0, priceLabel:'A consultar',
-    note:'Muy recomendado para pedidos grandes o colores corporativos exactos.'
-  },
-  {
-    id:'entrega', icon:'🚚',
-    title:'Entrega a domicilio en Madrid',
-    desc:'Llevamos tu pedido directamente a tu negocio o dirección en Madrid sin coste adicional. Sin desplazamientos ni esperas.',
-    tag:'SIEMPRE GRATIS', tagType:'free',
-    price:0, priceLabel:'Gratis',
-    note:'Solo disponible en Madrid capital y área metropolitana.'
-  }
-];
-
-var activeExtras = {};
-
-function buildExtrasGrid() {
-  var grid = document.getElementById('extrasGrid');
-  var html = '';
-  for(var i=0;i<EXTRAS.length;i++){
-    var ex = EXTRAS[i];
-    var isIncluded = ex.tagType === 'free';
-    var isActive = activeExtras[ex.id] || isIncluded;
-    html += '<div class="extra-card '+(isActive?'active':'')+'" id="ec-'+ex.id+'" onclick="toggleExtra(\''+ex.id+'\')">';
-    html += '<div class="extra-card-icon">'+ex.icon+'</div>';
-    html += '<div class="extra-card-body">';
-    html += '<div class="extra-card-title">'+ex.title+'</div>';
-    html += '<div class="extra-card-desc">'+ex.desc+'</div>';
-    html += '<div style="display:flex;align-items:center;gap:6px;margin-top:6px">';
-    if(isIncluded) {
-      html += '<span class="extra-card-tag tag-free">INCLUIDO GRATIS</span>';
-    } else {
-      html += '<span class="extra-card-tag tag-optional">OPCIONAL (Activar)</span>';
-    }
-    html += '</div></div>';
-    html += '<div class="extra-card-right">';
-    if(isIncluded){
-      html += '<span class="extra-price-free">GRATIS</span>';
-    } else {
-      html += '<label class="toggle-wrap" onclick="event.stopPropagation()">';
-      html += '<input type="checkbox" '+(isActive?'checked':'')+' onchange="toggleExtra(\''+ex.id+'\')">';
-      html += '<div class="toggle-track"></div>';
-      html += '<div class="toggle-thumb"></div>';
-      html += '</label>';
-    }
-    html += '</div></div>';
-  }
-  grid.innerHTML = html;
-}
-
-function toggleExtra(id) {
-  var ex = null;
-  for(var i=0;i<EXTRAS.length;i++){if(EXTRAS[i].id===id){ex=EXTRAS[i];break;}}
-  if(!ex || ex.tagType === 'free') return;
-
-  if(activeExtras[id]){
-    activeExtras[id] = false;
-    removeItem(ex.title);
-  } else {
-    activeExtras[id] = true;
-    addToCart(ex.title, ex.price);
-  }
-  buildExtrasGrid();
-  renderCart();
-}
-
-buildExtrasGrid();
-
-/* ============================================================
-   SERVICES CATALOG
-   ============================================================ */
-var SVCS=[
-  {id:'camisetas',icon:'👕',title:'Camisetas y Uniformes',desc:'Personaliza tu imagen corporativa',
-   note:'Tallas S a XXL. Logo personalizado incluido. Entrega en 7 días.',
-   sizes:[{l:'Camisa',w:26,h:32},{l:'Polo',w:26,h:30}],
-   prods:[{n:'Camisa básica hombre + logo 1 lado',p:22},{n:'Camisa básica mujer + logo 1 lado',p:22},{n:'Camisa básica hombre + logo 2 lados',p:26},{n:'Camisa básica mujer + logo 2 lados',p:26},{n:'Polo unisex + logo 1 lado',p:24},{n:'Polo unisex + logo 2 lados',p:28}]},
-  {id:'tarjetas',icon:'💳',title:'Tarjetas de Visita',desc:'Primera impresión que dura',
-   note:'Formato estándar 85×55 mm. Papel 300g.',
-   sizes:[{l:'85×55mm',w:42,h:27}],
-   prods:[{n:'200 uds · 2 caras color 300g',p:42},{n:'300 uds · 2 caras color 300g',p:52},{n:'500 uds · 2 caras color 300g',p:68},{n:'1.000 uds · 2 caras + plastificada',p:115}]},
-  {id:'flyers-vol',icon:'📄',title:'Flyers Gran Volumen',desc:'5.000 unidades · Máximo impacto',
-   note:'5.000 uds · Todo color · Offset.',
-   sizes:[{l:'A7',w:15,h:21},{l:'A6',w:21,h:30},{l:'DL',w:13,h:30},{l:'A5',w:28,h:36},{l:'A4',w:36,h:48},{l:'A3',w:46,h:58}],
-   prods:[{n:'Flyer A7 (73×95mm) · 5.000 uds',p:120},{n:'Flyer A6 (95×145mm) · 5.000 uds',p:160},{n:'Flyer DL (200×95mm) · 5.000 uds',p:200},{n:'Flyer A5 (190×145mm) · 5.000 uds',p:270},{n:'Flyer A4 (190×292mm) · 5.000 uds',p:480},{n:'Flyer A3 (392×292mm) · 5.000 uds',p:790}]},
-  {id:'flyers-dig',icon:'⚡',title:'Flyers Digitales · 24h',desc:'Pequeñas cantidades · Entrega rápida',
-   note:'B/N papel reciclado 80g o color offset 100g.',
-   sizes:[{l:'A6',w:21,h:30},{l:'A5',w:28,h:36},{l:'A4',w:36,h:48}],
-   prods:[{n:'400 uds · 1 cara · B/N reciclado',p:15},{n:'800 uds · 1 cara · B/N reciclado',p:27},{n:'1.200 uds · 1 cara · B/N reciclado',p:40},{n:'400 uds · 2 caras · B/N reciclado',p:20},{n:'800 uds · 2 caras · B/N reciclado',p:37},{n:'100 uds · 1 cara · color offset 100g',p:17},{n:'200 uds · 1 cara · color offset 100g',p:26},{n:'300 uds · 1 cara · color offset 100g',p:35},{n:'400 uds · 1 cara · color offset 100g',p:43},{n:'100 uds · 2 caras · color offset 100g',p:29},{n:'200 uds · 2 caras · color offset 100g',p:43},{n:'300 uds · 2 caras · color offset 100g',p:57}]},
-  {id:'flyers-off',icon:'🖨️',title:'Flyers Offset 135g',desc:'Calidad premium · Entrega 1 semana',
-   note:'135g offset todo color.',
-   sizes:[{l:'A6',w:21,h:30},{l:'A5',w:28,h:36},{l:'A4',w:36,h:48}],
-   prods:[{n:'500 uds · A5 offset color',p:105},{n:'500 uds · A4 offset color',p:150},{n:'1.000 uds · A6 offset color',p:85},{n:'1.000 uds · A5 offset color',p:125},{n:'1.000 uds · A4 offset color',p:170},{n:'2.500 uds · A5 offset color',p:175},{n:'2.500 uds · A4 offset color',p:275},{n:'5.000 uds · A5 offset color',p:225},{n:'5.000 uds · A4 offset color',p:395},{n:'10.000 uds · A5 offset color',p:360},{n:'10.000 uds · A4 offset color',p:695}]},
-  {id:'menus',icon:'🍽️',title:'Menús para Restaurante',desc:'Upsell ideal · Hostelería Madrid',
-   note:'Plastificados, laminados, poliéster o encuadernados.',
-   sizes:[{l:'A4 210×297',w:32,h:44},{l:'A3 297×420',w:44,h:58}],
-   prods:[{n:'Menús plastificados A4',p:40},{n:'Menús plastificados A3',p:55},{n:'Menús laminados A4',p:50},{n:'Menús poliéster A4',p:34},{n:'Menús encuadernados 8p A4',p:190},{n:'Menús encuadernados 16p A4',p:330}]},
-  {id:'adhesivos',icon:'🏷️',title:'Adhesivos Personalizados',desc:'Stickers y pegatinas para tu marca',
-   note:'Troquelados a medida. Resistentes al exterior.',
-   sizes:[{l:'50cm²',w:22,h:22,round:true},{l:'100cm²',w:30,h:24},{l:'200cm²',w:40,h:28}],
-   prods:[{n:'100 uds · hasta 50cm²',p:19},{n:'100 uds · hasta 100cm²',p:21},{n:'100 uds · hasta 200cm²',p:36},{n:'200 uds · hasta 50cm²',p:30},{n:'200 uds · hasta 100cm²',p:38},{n:'300 uds · hasta 50cm²',p:40},{n:'300 uds · hasta 100cm²',p:52},{n:'500 uds · hasta 100cm²',p:78},{n:'1.000 uds · hasta 100cm²',p:140},{n:'1.000 uds · hasta 200cm²',p:255}]},
-  {id:'imanes',icon:'🧲',title:'Imanes Personalizados',desc:'Perfectos para hostelería · QR incluido',
-   note:'Con resina o impresos. Ideales con QR del restaurante.',
-   sizes:[{l:'6cm Ø',w:32,h:32,round:true},{l:'75cm²',w:32,h:26},{l:'150cm²',w:42,h:30}],
-   prods:[{n:'100 imanes resina redondo 6cm',p:210},{n:'250 imanes resina redondo 6cm',p:450},{n:'100 imanes impresos hasta 75cm²',p:215},{n:'150 imanes impresos hasta 75cm²',p:285},{n:'100 imanes impresos hasta 150cm²',p:295}]},
-  {id:'carteleria',icon:'📋',title:'Cartelería y Letreros',desc:'PVC, Metacrilato y offset color',
-   note:'PVC 3mm o Metacrilato 3mm. Descuentos por cantidad.',
-   sizes:[{l:'A3 297×420',w:36,h:48},{l:'A2 420×594',w:46,h:58},{l:'A1 594×841',w:54,h:66}],
-   prods:[{n:'250 carteles A3 offset color',p:130},{n:'500 carteles A3 offset color',p:165},{n:'1.000 carteles A3 offset color',p:240},{n:'Letrero PVC 3mm · A3',p:18},{n:'Letrero PVC 3mm · A2',p:32},{n:'Letrero Metacrilato 3mm · A3',p:26},{n:'Letrero Metacrilato 3mm · A2',p:50},{n:'Letrero Metacrilato 3mm · A1',p:90}]},
-  {id:'rollup',icon:'🏳️',title:'Roll Up, Banderas y Expositores',desc:'Impacto máximo en ferias y eventos',
-   note:'Incluye soporte enrollable y bolsa de transporte.',
-   sizes:[{l:'85cm',w:11,h:52},{l:'100cm',w:13,h:52},{l:'120cm',w:15,h:52},{l:'150cm',w:19,h:52},{l:'200cm',w:24,h:52}],
-   prods:[{n:'Roll Up 85×205 cm',p:149},{n:'Roll Up 100×205 cm',p:165},{n:'Roll Up 120×205 cm',p:190},{n:'Roll Up 150×205 cm',p:230},{n:'Roll Up 200×205 cm',p:330},{n:'Caballete aluminio 1 cara',p:220},{n:'Caballete aluminio 2 caras',p:250},{n:'Bandera Gota/Surf 1,94×0,75 m',p:165},{n:'Bandera Gota/Surf 2,98×1,03 m',p:215},{n:'Bandera Gota/Surf 4,46×1,45 m',p:299}]},
-  {id:'vinilos',icon:'🪟',title:'Vinilos y Lonas',desc:'Escaparates y fachadas impactantes',
-   note:'Precio según medidas del cliente. Vinilo exterior de alta calidad.',
-   sizes:[{l:'1m²',w:32,h:32},{l:'2m²',w:44,h:32},{l:'4m² Lona',w:54,h:32},{l:'6m² Lona',w:64,h:32}],
-   prods:[{n:'Vinilo escaparate 1 m²',p:55},{n:'Vinilo escaparate 2 m²',p:108},{n:'Lona fachada 4 m²',p:210},{n:'Lona gran formato 6 m²',p:315}]},
-  {id:'web',icon:'🌐',title:'Páginas Web & Digital',desc:'No es una Páginas Web màs ,Es que la IA te encuentre y te recomiende',
-   note:'Web profesional 100% tuya. Sin permanencia tras 3 meses.',
-   webMode:true,
-   prods:[{n:'Web BÁSICO Pago inicial',p:397,tier:'basico',
-            desc:'Tu primera web profesional, sin letra pequeña y sin sorpresas. Diseño limpio, carga rápida y optimizada para que Google y la IA encuentren tu negocio.\n\n🔧 Pago inicial: 397€ (Incluye dominio+hosting 1er año).\n\n📅 Mensualidad: 79€/mes (Mantenimiento + 1 cambios).\n\nIdeal si buscas una presencia digital real.'},
-           {n:'Web BÁSICO Cuota mensual',p:79,tier:'basico'},
-           {n:'Web PRO Pago inicial',p:697,tier:'pro',
-            desc:'La web que trabaja mientras tú atiendes tu negocio. Diseño personalizado + SEO avanzado + optimización.\n\n🔧 Pago inicial: 697€ (Desarrollo, dominio+hosting 1er año).\n\n📅 Mensualidad: 129€/mes (Mantenimiento + 2 cambios).\n\nEl equilibrio perfecto entre precio y resultados.'},
-           {n:'Web PRO Cuota mensual',p:129,tier:'pro'},
-           {n:'Web PREMIUM Pago inicial',p:997,tier:'premium',
-            desc:'Tu web hecha a medida con código 100% tuyo. Un activo digital para siempre. Desarrollo desde cero y SEO profesional.\n\n🔧 Pago inicial: 997€ (Desarrollo a medida, SEO profesional).\n\n📅 Mensualidad: 189€/mes (Mantenimiento premium + 10 cambios ).\n\nPara negocios que entienden la web como una inversión.'},
-           {n:'Web PREMIUM Cuota mensual',p:189,tier:'premium'}]}
-];
-
-function buildSizeBar(svc){
-  if(!svc.sizes||svc.sizes.length===0)return '';
-  var h='<div class="size-ref-bar">';
-  for(var i=0;i<svc.sizes.length;i++){
-    var s=svc.sizes[i],br=s.round?'50%':'3px',fs=s.l&&s.l.length>5?'7px':'9px';
-    h+='<div class="sz-item"><div class="sz-box" onclick="selectSize(this, \''+svc.id+'\', \''+s.l+'\')" style="width:'+s.w+'px;height:'+s.h+'px;border-radius:'+br+';font-size:'+fs+'">'+s.l+'</div><div class="sz-lbl">'+s.l+'</div></div>';
-    if(i<svc.sizes.length-1)h+='<span style="color:#ccc;font-size:10px;padding-bottom:16px">·</span>';
-  }
-  h+='</div><div class="size-note">'+svc.note+'</div>';
-  return h;
-}
-function buildWebBody(svc){
-  var tiers=[{key:'basico',label:'BÁSICO',sub:'"Anti-Estafa"',color:'#3b82f6',badge:''},{key:'pro',label:'PRO',sub:'"El más elegido"',color:'#1B50E8',badge:'MÁS ELEGIDO'},{key:'premium',label:'PREMIUM',sub:'"Código Propio"',color:'#7c3aed',badge:''}];
-  var h='<div class="web-tiers">';
-  for(var t=0;t<tiers.length;t++){
-    var tier=tiers[t],ini=null,mon=null;
-    for(var i=0;i<svc.prods.length;i++){if(svc.prods[i].tier===tier.key){if(svc.prods[i].n.indexOf('inicial')>-1)ini=svc.prods[i];if(svc.prods[i].n.indexOf('mensual')>-1)mon=svc.prods[i];}}
-    h+='<div class="web-tier" style="border-color:'+tier.color+'30"><div class="web-tier-head" style="background:'+tier.color+'"><strong>'+tier.label+' '+tier.sub+'</strong>';
-    h+='</div><div class="web-tier-body">';
-    if(ini)h+='<div style="flex:1"><div class="wtp-label">Desde</div><div class="wtp-amount" style="color:var(--dark)">'+ini.p+' €</div></div>';
-    h+='<div class="web-tier-btns" style="flex:1;justify-content:flex-end">';
-    h+='<button class="btn-add" onclick="toggleWebDetails(\''+tier.key+'\')" style="padding:8px 16px;font-size:12px">Ver detalles</button>';
-    h+='</div></div>';
-    // Colapsable de detalles
-    h+='<div id="wdetails-'+tier.key+'" class="web-details-pane"><div style="padding:16px;white-space:pre-line;font-size:13px;line-height:1.5;color:#444">'+(ini.desc||'')+'';
-    h+='<div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">';
-    if(ini)h+='<button class="btn-add" onclick="addToCart(\''+ini.n+'\','+ini.p+')">+ Plan Inicial ('+ini.p+'€)</button>';
-    if(mon)h+='<button class="btn-add" onclick="addToCart(\''+mon.n+'\','+mon.p+')">+ Mantenimiento ('+mon.p+'€)</button>';
-    h+='</div></div></div></div>';
-  }
-  h+='</div>';return h;
-}
-
-function toggleWebDetails(key){
-  var el=document.getElementById('wdetails-'+key);
-  el.classList.toggle('open');
-}
-
-
-function buildBody(svc){
-  if(svc.webMode)return buildWebBody(svc);
-  var h=buildSizeBar(svc);
-  h+='<table class="prd-table"><thead><tr><th>Producto</th><th style="width:80px">Unidades</th><th></th></tr></thead><tbody>';
-  for(var i=0;i<svc.prods.length;i++){
-    var p=svc.prods[i],en=p.n.replace(/'/g,"\\'");
-    var unitMatch = p.n.match(/(\d+\.?\d*)/); 
-    var defaultQty = unitMatch ? unitMatch[0] : "1";
-    var cleanName = p.n.replace(/\d+\.?\d*\s*uds/i, "").replace(/·/g, "").trim();
-    
-    var sizeKey = "";
-    if(svc.sizes) {
-      for(var k=0; k<svc.sizes.length; k++) {
-        if(p.n.toLowerCase().includes(svc.sizes[k].l.toLowerCase())) { sizeKey = svc.sizes[k].l; break; }
+    <div class="rev-track-wrap">
+      <div class="rev-track" id="revTrack"></div>
+    </div>
+  </section>
+  <script>
+    /* Reseñas REALES de la ficha de Google de Digital Home (transcritas). */
+    (function(){
+      var STAR='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4 2 7L12 17l-6.5 3 2-7L2 9h7z"/></svg>';
+      var data=[
+        {t:"Hemos encargado unas tarjetas para nuestro enlace con código QR y han quedado genial. La calidad del papel es muy buena.", n:"Isabel V.", s:"Reseña en Google", c:"#1B50E8"},
+        {t:"Fueron comprensivos, rápidos y ajustaron el precio a mi presupuesto. Han quedado fantásticas las cartas tanto en calidad como en precisión.", n:"Dani M.", s:"Local Guide · Google", c:"#0E9F6E"},
+        {t:"Todo genial. Pedimos hacer una revista para un regalo y ha quedado estupenda. Tuvimos algún que otro problemilla con nuestro documento pero han tenido paciencia mientras lo solucionábamos. Un 10.", n:"S. BP", s:"Reseña en Google", c:"#D6336C"},
+        {t:"Me encantó el trabajo de Digital Home. Les encargué las etiquetas para mi marca de repostería y quedaron increíbles; el acabado es súper elegante y profesional. Me ayudaron con todo el diseño y fueron muy rápidos con la entrega.", n:"Sophia M.", s:"Reseña en Google", c:"#E0721B"},
+        {t:"5 estrellas. Recomendable, buena calidad y entregado a tiempo.", n:"Yuliana D.", s:"Reseña en Google", c:"#7C3AED"},
+        {t:"Excelente trabajo, muy recomendado. Dan los mejores servicios.", n:"Brandon M.", s:"Reseña en Google", c:"#2563EB"},
+        {t:"¡Experiencia excepcional! Desde el primer momento, la agencia captó la esencia de nuestro restaurante y creó una campaña a su medida.", n:"Babbu S.", s:"Local Guide · Google", c:"#0E9F6E"},
+        {t:"Excelente trabajo, súper recomendado. ¡Felicitaciones!", n:"Nielssen A.", s:"Reseña en Google", c:"#D6336C"}
+      ];
+      function card(r){
+        return '<div class="rev-card"><div class="rev-stars">'+STAR+STAR+STAR+STAR+STAR+'</div>'+
+          '<p class="rev-text">'+r.t+'</p>'+
+          '<div class="rev-who"><span class="rev-av" style="background:'+r.c+'">'+r.n.charAt(0)+'</span>'+
+          '<span><b>'+r.n+'</b><span>'+r.s+'</span></span></div></div>';
       }
+      var html=data.map(card).join('');
+      document.getElementById('revTrack').innerHTML = html + html; // duplicado para bucle continuo
+    })();
+  </script>
+
+
+  <!-- FAQ (texto plano indexable + coincide con el schema FAQPage del head) -->
+  <style>
+    .faq{ background:var(--fondo-2); }
+    .faq-wrap{ max-width:780px; margin:0 auto; }
+    .faq-list{ display:grid; gap:14px; margin-top:8px; }
+    .faq-item{ background:#fff; border:1px solid var(--linea); border-radius:16px; padding:22px 24px; }
+    .faq-item h3{ font-size:1.08rem; font-weight:700; margin-bottom:8px; }
+    .faq-item p{ color:var(--gris); font-size:.95rem; line-height:1.55; }
+  </style>
+  <section class="section faq" id="faq">
+    <div class="wrap faq-wrap">
+      <div class="head head--center reveal">
+        <span class="eyebrow">Preguntas frecuentes</span>
+        <h2>Dudas sobre tu imprenta en Madrid</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item reveal"><h3>¿Hacéis entrega a domicilio en Madrid?</h3><p>Sí. Llevamos tu pedido gratis a la puerta de tu negocio en todo Madrid, sin coste de envío añadido.</p></div>
+        <div class="faq-item reveal" data-d="1"><h3>¿Qué zonas de Madrid cubrís?</h3><p>Llevamos tu pedido a domicilio gratis por toda la ciudad de Madrid, incluyendo Usera, Latina, Tetuán, Chamberí, Chamartín y Villaverde.</p></div>
+        <div class="faq-item reveal" data-d="2"><h3>¿Tenéis tienda física o solo entrega a domicilio?</h3><p>Somos una imprenta a domicilio: no tenemos tienda al público, y por eso no te cobramos el sobrecoste de un local. Gestionamos todo online o por WhatsApp y te entregamos el pedido gratis en tu negocio en Madrid.</p></div>
+        <div class="faq-item reveal" data-d="2"><h3>¿Revisáis el archivo antes de imprimir?</h3><p>Sí. Antes de imprimir comprobamos resolución, color, medidas y cortes de tu archivo para evitar errores y que el resultado salga perfecto.</p></div>
+        <div class="faq-item reveal" data-d="3"><h3>¿Cómo pido un presupuesto?</h3><p>Nos escribes por WhatsApp o rellenas el formulario de la web con lo que necesitas y te respondemos con un presupuesto sin compromiso, normalmente en minutos.</p></div>
+        <div class="faq-item reveal" data-d="4"><h3>¿Cuánto tarda un pedido de imprenta?</h3><p>Depende del producto y la cantidad, pero la mayoría de los encargos se entregan en pocos días laborables en Madrid. Te confirmamos el plazo exacto al pedir el presupuesto.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="section section--soft" id="contacto">
+    <div class="wrap contact-grid">
+      <div class="contact-left reveal">
+        <span class="eyebrow">Hablemos</span>
+        <h2>¿Empezamos tu próximo encargo?</h2>
+        <p>Rellena el formulario y te abrimos WhatsApp con tu mensaje listo. Te respondemos en minutos, sin compromiso.</p>
+        <ul class="contact-pts">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Presupuesto sin compromiso</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Revisión de archivos incluida</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Entrega gratis en Madrid</li>
+        </ul>
+      </div>
+      <div class="form reveal" data-d="1">
+        <div id="formFields">
+          <div class="row" id="r-nombre">
+            <label for="i-nombre">¿Cómo te llamas?*</label>
+            <input id="i-nombre" type="text" placeholder="Tu nombre" autocomplete="name" />
+            <span class="err">Escribe tu nombre para continuar.</span>
+          </div>
+          <div class="row">
+            <label for="i-negocio">¿Qué negocio tienes? (opcional)</label>
+            <input id="i-negocio" type="text" placeholder="Un bar, una tienda, una marca..." />
+          </div>
+          <div class="row">
+            <label for="i-servicio">¿Qué necesitas?</label>
+            <select id="i-servicio">
+              <option value="">Elige una opción</option>
+              <option>Cartas y menús</option><option>Flyers y folletos</option>
+              <option>Tarjetas de visita</option><option>Lonas y roll-ups</option>
+              <option>Vinilos y rotulación</option><option>Textil y uniformes</option>
+              <option>Cartelería</option><option>Pegatinas y etiquetas</option>
+              <option>Otro / varias cosas</option>
+            </select>
+          </div>
+          <div class="row">
+            <label for="i-msg">Cuéntanos un poco más (opcional)</label>
+            <textarea id="i-msg" placeholder="Cantidad, fecha, medidas, lo que se te ocurra..."></textarea>
+          </div>
+          <button class="btn btn--primary" id="btnEnviar" type="button">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.06 2.87 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.69.25-1.29.18-1.41z"/></svg>
+            Enviar por WhatsApp
+          </button>
+        </div>
+        <div class="ok" id="formOk">
+          <div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <h3>¡Listo!</h3>
+          <p>Te abrimos WhatsApp con tu mensaje preparado. Si no se abrió solo, pulsa el botón.</p>
+          <a class="btn btn--primary" id="okWa" href="#" target="_blank" rel="noopener" style="justify-content:center;">Abrir WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER estilo Pentagram -->
+  <footer class="footer">
+    <div class="wrap">
+      <h2 class="footer-name reveal">Digital Home</h2>
+      <div class="footer-contact reveal" data-d="1">
+        <a href="tel:+34674913178"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> 674 913 178</a>
+        <a href="https://wa.me/34674913178" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.06 2.87 1.21 3.07c.15.2 2.1 3.2 5.08 4.49 2.98 1.29 2.98.86 3.52.81.54-.05 1.76-.72 2-1.41.25-.69.25-1.29.18-1.41z"/></svg> WhatsApp</a>
+        <a href="mailto:info@digitalhome.website"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg> info@digitalhome.website</a>
+        <a href="https://www.instagram.com/digita_hm/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg> @digita_hm</a>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Latina · Carabanchel · Villaverde, Madrid</span>
+      </div>
+
+      <div class="footer-map reveal" data-d="2">
+        <a class="btn btn--map" href="https://share.google/9WgyduS8RBNm5Zch6" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Ver en Google Maps · fotos y reseñas
+        </a>
+      </div>
+
+      <div class="footer-row reveal" data-d="3">
+        <span class="cr">© <span id="year">2026</span> Digital Home · Imprenta y diseño · Madrid</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL de servicio (se rellena por JS) -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-back" data-close></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+      <button class="modal-x" data-close aria-label="Cerrar">&times;</button>
+      <span class="eyebrow" id="mTag">Servicio</span>
+      <h3 id="mTitle"></h3>
+      <p id="mDesc"></p>
+      <h4>Características</h4>
+      <ul class="modal-feats" id="mFeats"></ul>
+      <div class="modal-rev">
+        <div><b>Revisión de archivos</b><p>Revisamos tu archivo antes de imprimir.</p></div>
+        <a class="btn btn--ghost" href="condiciones-revision-archivos.pdf" download>Descargar condiciones (PDF)</a>
+      </div>
+      <div class="modal-cta">
+        <a class="btn btn--primary" id="mWa" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.06 2.87 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.69.25-1.29.18-1.41z"/></svg>
+          Pedir por WhatsApp
+        </a>
+        <button class="btn btn--ghost" id="mForm" type="button">Rellenar formulario</button>
+      </div>
+    </div>
+  </div>
+
+  <a class="fab" href="https://wa.me/34674913178?text=Hola%20Digital%20Home!%20Tengo%20una%20consulta." target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="#fff"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.06 2.87 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.69.25-1.29.18-1.41zM12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2z"/></svg>
+  </a>
+
+  <script>
+    var WA_NUM = '34674913178';
+    var sinMov = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* Datos de cada servicio (lo que sale en la ventana) */
+    var SERVICIOS = {
+      "Cartas y menús":{tag:"Hostelería",desc:"Cartas de restaurante, menús del día y displays de mesa, listos para durar en el día a día.",feats:["Papel premium o plastificado resistente","Impresión a todo color","Tamaños A4, A5 o díptico","Acabado mate o brillo"]},
+      "Flyers y folletos":{tag:"Publicidad",desc:"Flyers, dípticos y trípticos para promociones, aperturas y eventos.",feats:["Papel couché de 135 a 350 g","Impresión a todo color, 1 o 2 caras","Tamaños A6, A5 y A4","Acabado mate, brillo o sin estucar"]},
+      "Tarjetas de visita":{tag:"Marca",desc:"La primera impresión de tu negocio, con el acabado que mejor te represente.",feats:["Papel couché de 350 g","Impresión a todo color, 2 caras","Tamaño 8,5 × 5,5 cm","Acabado mate, brillo o laminado"]},
+      "Lonas y roll-ups":{tag:"Gran formato",desc:"Para escaparates, ferias y eventos. Gran formato sin perder calidad.",feats:["Material resistente interior y exterior","Gran formato sin pixelar","Medidas a tu medida","Roll-up con estructura incluida"]},
+      "Vinilos y rotulación":{tag:"Rotulación",desc:"Lleva tu marca al escaparate, al suelo o al vehículo.",feats:["Vinilo de corte o impreso","Para escaparate, suelo o vehículo","Laminado de protección opcional","Resistente a la intemperie"]},
+      "Textil y uniformes":{tag:"Textil",desc:"Viste a tu equipo con tu marca. Cómodo, duradero y profesional.",feats:["Camisetas, polos y delantales","Serigrafía o bordado","Tallas y colores a elegir","Ideal para todo el equipo"]},
+      "Cartelería":{tag:"Local",desc:"Carteles, displays rígidos y señalética para tu local o evento.",feats:["Cartón pluma, PVC o foam","Rígido y resistente","Tamaños A3, A2, A1 o a medida","Para interior y escaparate"]},
+      "Pegatinas y etiquetas":{tag:"Producto",desc:"Etiqueta tus productos o decora con pegatinas a tu medida.",feats:["Vinilo adhesivo o papel","Troquel a la forma que quieras","Acabado mate, brillo o transparente","En hojas o en bobina"]}
+    };
+
+    /* NAV */
+    var nav = document.getElementById('nav');
+    addEventListener('scroll', function(){ nav.classList.toggle('nav--scrolled', scrollY > 20); }, {passive:true});
+    var burger = document.getElementById('burger'), menu = document.getElementById('menu');
+    function setMenu(o){ menu.classList.toggle('open', o); burger.setAttribute('aria-expanded', o?'true':'false'); document.body.classList.toggle('menu-open', o); }
+    burger.addEventListener('click', function(e){ e.stopPropagation(); setMenu(!menu.classList.contains('open')); });
+    menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setMenu(false); }); });
+    document.addEventListener('click', function(e){ if(menu.classList.contains('open') && !menu.contains(e.target) && !burger.contains(e.target)){ setMenu(false); } });
+
+    /* Aparición al scroll */
+    (function(){
+      var els = document.querySelectorAll('.reveal');
+      if(sinMov || !('IntersectionObserver' in window)){ els.forEach(function(e){ e.classList.add('vis'); }); return; }
+      var io = new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('vis'); io.unobserve(e.target); } }); }, {threshold:.12});
+      els.forEach(function(e){ io.observe(e); });
+    })();
+
+    /* Fotos */
+    document.querySelectorAll('.hero-img img, .card-img img, .tile img').forEach(function(img){
+      function ok(){ img.classList.add('is-loaded'); }
+      if(img.complete && img.naturalWidth>0) ok();
+      img.addEventListener('load', ok);
+      img.addEventListener('error', function(){ img.remove(); });
+    });
+
+    /* MODAL de servicio */
+    var modal = document.getElementById('modal');
+    var mTitle=document.getElementById('mTitle'), mDesc=document.getElementById('mDesc'),
+        mFeats=document.getElementById('mFeats'), mTag=document.getElementById('mTag'),
+        mWa=document.getElementById('mWa'), mForm=document.getElementById('mForm');
+    var servicioActual = '';
+    var checkSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>';
+
+    function abrirModal(nombre){
+      var s = SERVICIOS[nombre]; if(!s) return;
+      servicioActual = nombre;
+      mTag.textContent = s.tag; mTitle.textContent = nombre; mDesc.textContent = s.desc;
+      mFeats.innerHTML = s.feats.map(function(f){ return '<li>'+checkSvg+' '+f+'</li>'; }).join('');
+      mWa.setAttribute('href','https://wa.me/'+WA_NUM+'?text='+encodeURIComponent('Hola Digital Home! Quiero información sobre: '+nombre+'.'));
+      modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
+      document.body.style.overflow='hidden';
+      modal.querySelector('.modal-x').focus();
     }
-    h+='<tr data-size="'+sizeKey+'"><td class="prd-name">';
-    if(sizeKey) h+='<span style="display:inline-block;padding:1px 4px;background:var(--blue-p);color:var(--blue);font-size:9px;font-weight:700;border-radius:3px;margin-right:6px;border:1px solid rgba(27,80,232,0.2)">'+sizeKey+'</span>';
-    h+=cleanName+'</td>';
-    h+='<td><input type="text" class="qty-edit-input" id="qty-'+svc.id+'-'+i+'" value="'+defaultQty+'" onclick="event.stopPropagation()" style="width:60px;padding:4px;border:1px solid var(--border);border-radius:4px;font-size:12px;font-weight:700;text-align:center;background:#fff;color:var(--dark)"></td>';
+    function cerrarModal(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
 
-    h+='<td class="prd-action"><button class="btn-add" onclick="addWithQty(\''+svc.id+'\','+i+',\''+cleanName+'\','+p.p+')">+ Añadir</button></td></tr>';
-  }
-  h+='</tbody></table>';return h;
-}
+    document.querySelectorAll('.card[data-serv]').forEach(function(c){
+      c.addEventListener('click', function(){ abrirModal(c.getAttribute('data-serv')); });
+    });
+    modal.querySelectorAll('[data-close]').forEach(function(el){ el.addEventListener('click', cerrarModal); });
+    addEventListener('keydown', function(e){ if(e.key==='Escape' && modal.classList.contains('open')) cerrarModal(); });
 
-function addWithQty(svcId, idx, name, price){
-  var input = document.getElementById('qty-'+svcId+'-'+idx);
-  var num = parseInt(input ? input.value : "1");
-  if(isNaN(num)) num = 1;
-  addToCart(name, price, num);
-}
+    /* Botón "rellenar formulario" del modal: preselecciona el servicio y baja al form */
+    var sel = document.getElementById('i-servicio');
+    function seleccionar(nombre){ for(var i=0;i<sel.options.length;i++){ if(sel.options[i].text===nombre){ sel.selectedIndex=i; return; } } }
+    mForm.addEventListener('click', function(){
+      seleccionar(servicioActual); cerrarModal();
+      document.getElementById('contacto').scrollIntoView({behavior:'smooth'});
+    });
+    /* Botones con data-prefill (hostelería, etc.) preseleccionan en el form */
+    document.querySelectorAll('[data-prefill]').forEach(function(el){
+      el.addEventListener('click', function(){ seleccionar(el.getAttribute('data-prefill')); });
+    });
 
-function addToCart(name, price, qty){
-  var q = qty || 1;
-  var exists = cart.find(function(it){return it.name === name});
-  if(exists){
-    exists.qty = q; // Reemplazamos por la nueva cantidad editada
-  } else {
-    cart.push({name: name, price: price, qty: q});
-  }
-  renderCart();
-  toggleCart(true);
-}
+    /* Enviar formulario → WhatsApp */
+    document.getElementById('btnEnviar').addEventListener('click', function(){
+      var nombre=document.getElementById('i-nombre').value.trim();
+      var r=document.getElementById('r-nombre');
+      if(!nombre){ r.classList.add('bad'); document.getElementById('i-nombre').focus(); return; }
+      r.classList.remove('bad');
+      var negocio=document.getElementById('i-negocio').value.trim();
+      var servicio=sel.value, msg=document.getElementById('i-msg').value.trim();
+      var t='Hola Digital Home! Soy '+nombre+'.';
+      if(negocio) t+=' Tengo: '+negocio+'.';
+      if(servicio) t+=' Necesito: '+servicio+'.';
+      if(msg) t+=' Detalles: '+msg;
+      var url='https://wa.me/'+WA_NUM+'?text='+encodeURIComponent(t);
+      document.getElementById('okWa').setAttribute('href',url);
+      document.getElementById('formFields').style.display='none';
+      document.getElementById('formOk').classList.add('show');
+      window.open(url,'_blank');
+    });
 
-
-
-function addToCart(name, price, qty){
-  var q = qty || 1;
-  var exists = cart.find(function(it){return it.name === name});
-  if(exists){
-    exists.qty += q;
-  } else {
-    cart.push({name: name, price: price, qty: q});
-  }
-  renderCart();
-  toggleCart(true);
-}
-
-function changeQty(name, d) {
-  for(var i=0; i<cart.length; i++){
-    if(cart[i].name === name){
-      cart[i].qty = Math.max(1, cart[i].qty + d);
-      break;
-    }
-  }
-  renderCart();
-}
-
-
-function toggleSvc(id){var body=document.getElementById('sb-'+id),card=body.parentElement,was=card.classList.contains('open');document.querySelectorAll('.svc-card.open').forEach(function(c){c.classList.remove('open');});if(!was)card.classList.add('open');}
-
-function selectSize(el, svcId, sizeLabel){
-  var bar = el.closest('.size-ref-bar');
-  if(!bar) return;
-  bar.querySelectorAll('.sz-box').forEach(function(box){box.classList.remove('active');});
-  el.classList.add('active');
-
-  // Alineación: buscar en la tabla de este servicio la primera fila que coincida con el tamaño
-  var section = document.getElementById('sb-' + svcId);
-  if(section) {
-    var rows = section.querySelectorAll('tr[data-size="'+sizeLabel+'"]');
-    if(rows.length > 0) {
-      rows[0].scrollIntoView({behavior:'smooth', block:'center'});
-      rows[0].style.backgroundColor = '#f0f5ff';
-      setTimeout(function(){ rows[0].style.backgroundColor = ''; }, 1000);
-    }
-  }
-}
-
-var grid=document.getElementById('sGrid');
-for(var s=0;s<SVCS.length;s++){
-  var svc=SVCS[s],card=document.createElement('div');
-  card.className='svc-card';
-  card.innerHTML='<div class="svc-header" onclick="toggleSvc(\''+svc.id+'\')"><div style="display:flex;align-items:center;gap:12px;flex:1;min-width:0"><div class="svc-icon-box">'+svc.icon+'</div><div><div class="svc-title">'+svc.title+'</div><div class="svc-desc">'+svc.desc+'</div></div></div><div class="svc-toggle"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div></div><div class="svc-body" id="sb-'+svc.id+'">'+buildBody(svc)+'</div>';
-  grid.appendChild(card);
-}
-document.addEventListener('click',function(e){
-  if(e.target&&e.target.classList.contains('btn-add')){
-    var btn=e.target,orig=btn.textContent;
-    btn.textContent='✓';btn.classList.add('added');
-    setTimeout(function(){btn.textContent=orig;btn.classList.remove('added');},1200);
-  }
-});
-</script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
